@@ -1,0 +1,14 @@
+.place__button {
+    height: 18px;
+    width: 21px;
+    background: url("../../../images/Like.svg"), no-repeat;
+    border: none;
+    align-self: center;
+    padding: 0;
+    outline:0;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin-right: 22px;
+  }
+
+  

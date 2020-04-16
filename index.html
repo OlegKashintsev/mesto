@@ -1,34 +1,109 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
     <title>Mesto</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="page">
-    <header class="header">
-    <img class="header__logo" src="./images/Logo.svg" alt="Логотип сайта">
- </header>   
- <section class="profile">
-    <img class="profile__pic" src="./images/Kusto.jpg" alt="Фотография профиля">
-    <div class="profile__info">
-        <p class="profile__name">Жак-Ив Кусто</p>
-        <p class="profile__profession">Исследователь океана</p>
-        <button class="add-button"></button>
+      <header class="header">
+        <img class="header__logo" src="./images/Logo.svg" alt="Логотип сайта" />
+      </header>
+      <main class="content">
+        <section class="profile">
+          <img
+            class="profile__pic"
+            src="./images/Who.jpg"
+            alt="Фотография профиля"
+          />
+          <div class="profile__info">
+            <div class="profile__text">
+              <div class="profile__text_edit">
+              <h2 class="profile__name">Олег Кашинцев</h2>
+              <button class="profile__button profile__button_edit"></button>
+            </div>
+              <p class="profile__profession">Сибаритствующий тунеядец</p>
+            </div>
+            <button class="profile__button profile__button_add"></button>
+          </div>
+        </section>
+        <section class="place">
+          <div class="place__item">
+            <img
+              class="place__image"
+              src="./images/Kazan.jpg"
+              alt="Мечеть Кул-Шариф в Казани"
+            />
+            <div class="place__text">
+              <div class="place__title">Казань</div>
+              <button class="place__button"></button>
+            </div>
+          </div>
+          <div class="place__item">
+            <img
+              class="place__image"
+              src="./images/Kazbeg.jpg"
+              alt="Вид на гору Казбег в Грузии"
+            />
+            <div class="place__text">
+              <div class="place__title">Гора Казбег</div>
+              <button class="place__button"></button>
+            </div>
+          </div>
+          <div class="place__item">
+            <img class="place__image" src="./images/Altay.jpg" alt="Алтай" />
+            <div class="place__text">
+              <div class="place__title">Алтай</div>
+              <button class="place__button"></button>
+            </div>
+          </div>
+          <div class="place__item">
+            <img
+              class="place__image"
+              src="./images/Yoshkar-Ola.jpg"
+              alt="Йошкар-Ола"
+            />
+            <div class="place__text">
+              <div class="place__title">Йошкар-Ола</div>
+              <button class="place__button"></button>
+            </div>
+          </div>
+          <div class="place__item">
+            <img class="place__image" src="./images/Tyumen.jpg" alt="Тюмень" />
+            <div class="place__text">
+              <div class="place__title">Тюмень</div>
+              <button class="place__button"></button>
+            </div>
+          </div>
+          <div class="place__item">
+            <img
+              class="place__image"
+              src="./images/Baikal.jpg"
+              alt="Озеро Байкал"
+            />
+            <div class="place__text">
+              <div class="place__title">Озеро Байкал</div>
+              <button class="place__button"></button>
+            </div>
+          </div>
+        </section>
+        <footer class="footer">
+          <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+        </footer>
+        <div class="popup popup_opened">
+        <div class="popup__container">
+          <button class="popup__button popup__button_close"></button>
+          <p class="popup__title">Редактировать профиль</p>
+          <form class="popup__form">
+            <input class="popup__input popup__input_name" type="text" value="Name">
+          <input class="popup__input popup__input_profession" type="text" value="Profession"></form>
+          <button type="submit" class="popup__button popup__button_save">Сохранить</button>
+        </div>
+      </div>
+      </main>
     </div>
-       
-    
-</section>
-<section class="photo-grid">
-    <img class="photo-grid__image" src="./images/Karachaevsk.jpg" alt="Фотография Карачаево-Черкессии">
-    <img class="photo-grid__image" src="./images/Elbrus.jpg" alt="Вид на гору Эльбрус">
-    <img class="photo-grid__image" src="./images/Dombai.jpg" alt="Вид на гору Домбай">
-    <img class="photo-grid__image" src="./images/Elbrus.jpg" alt="Вид на гору Эльбрус">
-    <img class="photo-grid__image" src="./images/Dombai.jpg" alt="Вид на гору Домбай">
-    <img class="photo-grid__image" src="./images/Karachaevsk.jpg" alt="Фотография Карачаево-Черкессии">
-</section>
-</div>
-</body>
+    <script src="./script/script.js"></script>
+  </body>
 </html>

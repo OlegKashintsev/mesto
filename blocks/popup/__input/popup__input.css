@@ -1,0 +1,17 @@
+@import url(_name/popup__input_name.css);
+@import url(_profession/popup__input_profession.css);
+
+.popup__input {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 0;
+  width: 358px;
+  outline: 0;
+}
+
+@media screen and (max-width: 420px) {
+  .popup__input {
+    width: 220px;
+    margin: 0 auto;
+  }
+}
