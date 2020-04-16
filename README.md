@@ -9,3 +9,5 @@
 * HTML, CSS;
 * JavaScript. 
 
+Ссылка на страницу на GitHub:
+https://olegkashintsev.github.io/mesto/
