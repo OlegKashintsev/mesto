@@ -9,10 +9,17 @@
   left: 425px;
 }
 
+@media screen and (max-width: 600px) {
+  .popup__container {
+    width: 230px;
+    height: 330px;
+  }
+}
+
 @media screen and (max-width: 420px) {
   .popup__container {
-    width: 282px;
+    width: 262px;
     top: 195px;
-    left: 20px;
+    left: 28px;
   }
 }

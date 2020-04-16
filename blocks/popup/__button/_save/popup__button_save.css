@@ -26,3 +26,10 @@
     margin: 0 auto;
   }
 }
+
+@media screen and (max-width: 340px) {
+  .popup__button_save {
+    width: 190px;
+    margin: 0 auto;
+  }
+}
