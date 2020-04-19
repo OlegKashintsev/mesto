@@ -9,100 +9,120 @@
   <body>
     <div class="page">
       <header class="header">
-        <img class="header__logo" src="./images/Logo.svg" alt="Логотип сайта" />
+        <img class="header__logo" src="./images/logo.svg" alt="Логотип сайта" />
       </header>
       <main class="content">
         <section class="profile">
           <img
             class="profile__pic"
-            src="./images/Who.jpg"
+            src="./images/who.jpg"
             alt="Фотография профиля"
           />
           <div class="profile__info">
             <div class="profile__text">
-              <div class="profile__text_edit">
-              <h2 class="profile__name">Олег Кашинцев</h2>
-              <button class="profile__button profile__button_edit"></button>
-            </div>
+              <div class="profile__edit">
+                <h2 class="profile__name">Олег Кашинцев</h2>
+                <button
+                  type="button"
+                  class="profile__button profile__button_edit"
+                ></button>
+              </div>
               <p class="profile__profession">Сибаритствующий тунеядец</p>
             </div>
-            <button class="profile__button profile__button_add"></button>
+            <button
+              type="button"
+              class="profile__button profile__button_add"
+            ></button>
           </div>
         </section>
         <section class="place">
           <div class="place__item">
             <img
               class="place__image"
-              src="./images/Kazan.jpg"
+              src="./images/kazan.jpg"
               alt="Мечеть Кул-Шариф в Казани"
             />
             <div class="place__text">
-              <div class="place__title">Казань</div>
-              <button class="place__button"></button>
+              <h3 class="place__title">Казань</h3>
+              <button type="button" class="place__button"></button>
             </div>
           </div>
           <div class="place__item">
             <img
               class="place__image"
-              src="./images/Kazbeg.jpg"
+              src="./images/kazbeg.jpg"
               alt="Вид на гору Казбег в Грузии"
             />
             <div class="place__text">
-              <div class="place__title">Гора Казбег</div>
-              <button class="place__button"></button>
+              <h3 class="place__title">Гора Казбег</h3>
+              <button type="button" class="place__button"></button>
             </div>
           </div>
           <div class="place__item">
-            <img class="place__image" src="./images/Altay.jpg" alt="Алтай" />
+            <img class="place__image" src="./images/altay.jpg" alt="Алтай" />
             <div class="place__text">
-              <div class="place__title">Алтай</div>
-              <button class="place__button"></button>
+              <h3 class="place__title">Алтай</h3>
+              <button type="button" class="place__button"></button>
             </div>
           </div>
           <div class="place__item">
             <img
               class="place__image"
-              src="./images/Yoshkar-Ola.jpg"
+              src="./images/yoshkar-ola.jpg"
               alt="Йошкар-Ола"
             />
             <div class="place__text">
-              <div class="place__title">Йошкар-Ола</div>
-              <button class="place__button"></button>
+              <h3 class="place__title">Йошкар-Ола</h3>
+              <button type="button" class="place__button"></button>
             </div>
           </div>
           <div class="place__item">
-            <img class="place__image" src="./images/Tyumen.jpg" alt="Тюмень" />
+            <img class="place__image" src="./images/tyumen.jpg" alt="Тюмень" />
             <div class="place__text">
-              <div class="place__title">Тюмень</div>
-              <button class="place__button"></button>
+              <h3 class="place__title">Тюмень</h3>
+              <button type="button" class="place__button"></button>
             </div>
           </div>
           <div class="place__item">
             <img
               class="place__image"
-              src="./images/Baikal.jpg"
+              src="./images/baikal.jpg"
               alt="Озеро Байкал"
             />
             <div class="place__text">
-              <div class="place__title">Озеро Байкал</div>
-              <button class="place__button"></button>
+              <h3 class="place__title">Озеро Байкал</h3>
+              <button type="button" class="place__button"></button>
             </div>
           </div>
         </section>
-        <footer class="footer">
-          <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
-        </footer>
-        <div class="popup popup_opened">
-        <div class="popup__container">
-          <button class="popup__button popup__button_close"></button>
-          <p class="popup__title">Редактировать профиль</p>
-          <form class="popup__form">
-            <input class="popup__input popup__input_name" type="text" value="Name">
-          <input class="popup__input popup__input_profession" type="text" value="Profession"></form>
-          <button type="submit" class="popup__button popup__button_save">Сохранить</button>
-        </div>
-      </div>
-      </main>
+        <div class="popup">
+          <form class="popup__container">
+            <button
+              type="button"
+              class="popup__button popup__button_close"
+            ></button>
+            <p class="popup__title">Редактировать профиль</p>
+            <div class="popup__text">
+              <input
+                class="popup__input popup__input_name"
+                type="text"
+                placeholder="Имя"
+              />
+              <input
+                class="popup__input popup__input_profession"
+                type="text"
+                placeholder="Род Занятий"
+              />
+            </div>
+              <button type="submit" class="popup__button popup__button_save">
+              Сохранить
+            </button>
+          </form>
+          </div>
+        </main>
+      <footer class="footer">
+        <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+      </footer>
     </div>
     <script src="./script/script.js"></script>
   </body>

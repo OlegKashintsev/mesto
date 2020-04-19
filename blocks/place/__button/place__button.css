@@ -1,7 +1,7 @@
 .place__button {
     height: 18px;
     width: 21px;
-    background: url("../../../images/Like.svg"), no-repeat;
+    background: url("../../../images/like.svg"), no-repeat;
     border: none;
     align-self: center;
     padding: 0;
@@ -11,4 +11,7 @@
     margin-right: 22px;
   }
 
-  
+  .place__button:hover {
+    opacity: 0.4;
+    transition: 1s;
+  }

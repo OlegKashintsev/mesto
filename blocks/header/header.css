@@ -3,7 +3,6 @@
 .header {
   width: 882px;
   margin: 0 auto;
-  padding-top: 45px;
   position: relative;
 }
 
@@ -28,5 +27,9 @@
 @media screen and (max-width: 330px) {
   .header {
     width: 320px;
+  }
+
+  .header::after {
+    bottom: -30px;
   }
 }

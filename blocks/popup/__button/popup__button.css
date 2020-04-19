@@ -1,2 +1,10 @@
 @import url(_close/popup__button_close.css);
 @import url(_save/popup__button_save.css);
+
+.popup__button {
+  border: none;
+  align-self: center;
+  outline: 0;
+  cursor: pointer;
+  box-sizing: border-box;
+}

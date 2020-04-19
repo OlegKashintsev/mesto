@@ -1,16 +1,11 @@
 .popup__button_close {
   height: 45px;
   width: 45px;
-  border: none;
-  align-self: center;
-  outline: 0;
   padding: 0;
-  cursor: pointer;
-  box-sizing: border-box;
-  background: url("../../../../images/CloseIcon.svg"), no-repeat;
+  background: url("../../../../images/closeicon.svg"), no-repeat;
   position: absolute;
   top: -50px;
-  left: 420px;
+  right: -30px;
 }
 
 .popup__button_close:hover {
@@ -22,6 +17,6 @@
   .popup__button_close {
     position: absolute;
     top: -50px;
-    left: 230px;
+    right: -20px;
   }
 }
