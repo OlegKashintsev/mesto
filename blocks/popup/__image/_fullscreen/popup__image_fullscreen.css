@@ -1,0 +1,7 @@
+.popup__image_fullscreen {
+  grid-column: 1;
+  grid-row: 1;
+  max-width: 75vw;
+  max-height: 75vh;
+ 
+}

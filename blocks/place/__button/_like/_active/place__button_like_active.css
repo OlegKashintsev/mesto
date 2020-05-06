@@ -1,0 +1,6 @@
+.place__button_like_active {
+  height: 18px;
+  width: 21px;
+  margin-right: 22px;
+  background: url("../../../../../images/like_filled.svg"), no-repeat;
+}

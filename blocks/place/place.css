@@ -4,6 +4,7 @@
 @import url(__title/place__title.css);
 @import url(__button/place__button.css);
 
+
 .place {
     width: 882px;
     display: grid;
@@ -30,3 +31,5 @@
       grid-template-rows: auto;
     }
   }
+
+ 

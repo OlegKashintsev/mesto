@@ -1,14 +1,14 @@
+@import url(_remove/place__button_remove.css);
+@import url(_like/_active/place__button_like_active.css);
+@import url(_like/_disactive/place__button_like_disactive.css);
+
 .place__button {
-    height: 18px;
-    width: 21px;
-    background: url("../../../images/like.svg"), no-repeat;
     border: none;
     align-self: center;
     padding: 0;
     outline:0;
     cursor: pointer;
     box-sizing: border-box;
-    margin-right: 22px;
   }
 
   .place__button:hover {

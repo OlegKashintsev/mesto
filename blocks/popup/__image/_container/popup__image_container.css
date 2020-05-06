@@ -1,0 +1,7 @@
+.popup__image_container {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  grid-template-rows: repeat(2, max-content);
+  justify-content: center;
+  margin-top: 70px;
+}

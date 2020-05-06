@@ -1,5 +1,7 @@
 @import url(_name/popup__input_name.css);
 @import url(_profession/popup__input_profession.css);
+@import url(_place/_title/popup__input_place_title.css);
+@import url(_place/_link/popup__input_place_link.css);
 
 .popup__input {
   border: none;

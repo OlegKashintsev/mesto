@@ -35,71 +35,31 @@
             ></button>
           </div>
         </section>
-        <section class="place">
+
+        <section class="place"></section>
+
+        <template id="card">
           <div class="place__item">
-            <img
-              class="place__image"
-              src="./images/kazan.jpg"
-              alt="Мечеть Кул-Шариф в Казани"
-            />
-            <div class="place__text">
-              <h3 class="place__title">Казань</h3>
-              <button type="button" class="place__button"></button>
-            </div>
-          </div>
-          <div class="place__item">
-            <img
-              class="place__image"
-              src="./images/kazbeg.jpg"
-              alt="Вид на гору Казбег в Грузии"
-            />
-            <div class="place__text">
-              <h3 class="place__title">Гора Казбег</h3>
-              <button type="button" class="place__button"></button>
-            </div>
-          </div>
-          <div class="place__item">
-            <img class="place__image" src="./images/altay.jpg" alt="Алтай" />
-            <div class="place__text">
-              <h3 class="place__title">Алтай</h3>
-              <button type="button" class="place__button"></button>
-            </div>
-          </div>
-          <div class="place__item">
-            <img
-              class="place__image"
-              src="./images/yoshkar-ola.jpg"
-              alt="Йошкар-Ола"
-            />
-            <div class="place__text">
-              <h3 class="place__title">Йошкар-Ола</h3>
-              <button type="button" class="place__button"></button>
-            </div>
-          </div>
-          <div class="place__item">
-            <img class="place__image" src="./images/tyumen.jpg" alt="Тюмень" />
-            <div class="place__text">
-              <h3 class="place__title">Тюмень</h3>
-              <button type="button" class="place__button"></button>
-            </div>
-          </div>
-          <div class="place__item">
-            <img
-              class="place__image"
-              src="./images/baikal.jpg"
-              alt="Озеро Байкал"
-            />
-            <div class="place__text">
-              <h3 class="place__title">Озеро Байкал</h3>
-              <button type="button" class="place__button"></button>
-            </div>
-          </div>
-        </section>
-        <div class="popup">
-          <form class="popup__container">
             <button
               type="button"
-              class="popup__button popup__button_close"
+              class="place__button place__button_remove"
+            ></button>
+            <img class="place__image" src="" alt="" />
+            <div class="place__text">
+              <h3 class="place__title"></h3>
+              <button
+                type="button"
+                class="place__button place__button_like_disactive"
+              ></button>
+            </div>
+          </div>
+        </template>
+
+        <div class="popup popup_type_profile">
+          <form class="popup__container popup__container_edit">
+            <button
+              type="button"
+              class="popup__button popup__button_close popup__button_close_profile"
             ></button>
             <p class="popup__title">Редактировать профиль</p>
             <div class="popup__text">
@@ -114,12 +74,48 @@
                 placeholder="Род Занятий"
               />
             </div>
-              <button type="submit" class="popup__button popup__button_save">
+            <button type="submit" class="popup__button popup__button_save">
               Сохранить
             </button>
           </form>
+        </div>
+
+        <div class="popup popup_type_add">
+          <form class="popup__container popup__container_add">
+            <button
+              type="button"
+              class="popup__button popup__button_close popup__button_close_add"
+            ></button>
+            <p class="popup__title">Новое место</p>
+            <div class="popup__text">
+              <input
+                class="popup__input popup__input_place_title"
+                type="text"
+                placeholder="Название"
+              />
+              <input
+                class="popup__input popup__input_place_link"
+                type="text"
+                placeholder="Ссылка на картинку"
+              />
+            </div>
+            <button type="submit" class="popup__button popup__button_create">
+              Создать
+            </button>
+          </form>
+        </div>
+
+        <section class="popup popup_type_image">
+          <div class="popup__image_container">
+            <button
+              type="button"
+              class="popup__button_close_image"
+            ></button>
+            <img src="" alt="" class="popup__image_fullscreen" />
+            <p class="popup__image_figcaption"></p>
           </div>
-        </main>
+        </section>
+      </main>
       <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
       </footer>
