@@ -9,12 +9,12 @@
   outline: 0;
   cursor: pointer;
   box-sizing: border-box;
- align-items: flex-start;
-
+  position: absolute;
+  top: 0px;
+  right: -38px;
 }
 
 .popup__button_close_image:hover {
   opacity: 0.6;
   transition: 1s;
 }
-
