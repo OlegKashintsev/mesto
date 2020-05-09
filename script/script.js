@@ -1,9 +1,8 @@
-const popup = document.querySelector('.popup'); // Попап
+// Попап
 
 //Профиль
 const popupProfile = document.querySelector('.popup_type_profile'); // Попап профиля
 const buttonEdit = document.querySelector('.profile__button_edit'); // Открыть редактирование профиля
-const buttonSaveProfile = document.querySelector('.popup__button_save'); // Сохранить изменения профиля
 const buttonCloseProfile = document.querySelector('.popup__button_close_profile'); // Закрыть редактирование профиля 
 const containerProfile = document.querySelector('.popup__container_edit'); // Контейнер попапа редактирования профиля
 const nameInput = document.querySelector('.popup__input_name'); // Имя профиля в попап
@@ -19,6 +18,8 @@ const buttonCloseAdd = document.querySelector('.popup__button_close_add');  // �
 const containerAdd = document.querySelector('.popup__container_add'); // Контейнер попапа добавления карточки
 const placeTemplate = document.querySelector('#card').content; // Шаблон карточки
 const placeContainer = document.querySelector('.places'); // Контейнер для создания карточки
+
+
 
 
 //Картинки
@@ -58,34 +59,34 @@ const cards = [
 }
 ];
 
-// Открытие/закрытие попапов
+//  Открытие/закрытие попапов
 function togglePopup(popupElement) {
-  if (popupElement.classList.contains('profile__button_edit')) {
-    nameInput.value = nameForm.textContent;
-    professionInput.value = professionForm.textContent;
-  }
-
-  if (popupElement.classList.contains('profile__button_edit') || popupElement.classList.contains('popup__button_close_profile') || popupElement.classList.contains('popup__container_edit')) {
-    popupProfile.classList.toggle('popup_opened'); 
-  }
-
-  if (popupElement.classList.contains('profile__button_add') || popupElement.classList.contains('popup__button_close_add') || popupElement.classList.contains('popup__container_add')) {
-   placeForm.value = ''; 
-    placeLink.value = '';
-    popupAdd.classList.toggle('popup_opened'); 
-  }
-
-  if (popupElement.classList.contains('place__image') || popupElement.classList.contains('popup__button_close_image')) {
-    popupImage.classList.toggle('popup_opened'); 
-  }
+  popupElement.classList.toggle('popup_opened'); 
 }
 
+
 // Открыть картинку в полноэкранном режиме
+
 function openFullscreenImage(evt) {
   popupFullscreenImage.src = evt.target.src;
   popupFullscreenImage.alt = evt.target.alt;
   popupFigcaption.textContent = evt.target.alt;
-  togglePopup(evt.target);
+  togglePopup(popupImage);
+}
+
+
+// Попап редактирования профиля
+function ProfileEdit() {
+   nameInput.value = nameForm.textContent; 
+   professionInput.value = professionForm.textContent; 
+   togglePopup(popupProfile);
+}
+
+// Попап добавления новой карточки
+function AddPopup() {
+  placeForm.value = ''; 
+  placeLink.value = '';
+  togglePopup(popupAdd);
 }
 
 // Лайкнуть
@@ -97,10 +98,11 @@ function changeLike(evt) {
 
 // Удалить карточку
 function deleteCard(evt) {
-  evt.target.closest('.place').querySelector('.place__button_like_disactive').removeEventListener('click', changeLike);
-  evt.target.closest('.place').querySelector('.place__button_remove').removeEventListener('click', deleteCard);
-  evt.target.closest('.place').querySelector('.place__image').removeEventListener('click', openFullscreenImage);
-  evt.target.closest('.place').remove()
+  const placeCard = evt.target.closest('.place'); 
+  placeCard.querySelector('.place__button_like_disactive, .place__button_like_active').removeEventListener('click', changeLike);
+  placeCard.querySelector('.place__button_remove').removeEventListener('click', deleteCard);
+  placeCard.querySelector('.place__image').removeEventListener('click', openFullscreenImage);
+  placeCard.remove()
 };
 
 // Создать новую карточку 
@@ -117,32 +119,34 @@ function addNewCard(item) {
 };
 
  //  Добавить карточки в разметку
-function revealCards(cards) {
-  cards.forEach(addCard)
-}; 
-
 function addCard(card) {
   placeContainer.prepend(addNewCard(card))
 };
 
 
+function revealCards(cards) {
+  cards.forEach(addCard)
+}; 
+
+
+
 // Сохранить редакцию профиля
 function formEditSubmitHandler (evt) {       
   evt.preventDefault();
-nameForm.textContent = nameInput.value;
-professionForm.textContent = professionInput.value;
-togglePopup(evt.target);
+ nameForm.textContent = nameInput.value;
+ professionForm.textContent = professionInput.value;
+ togglePopup(popupProfile);
 };
 
 
 // Отправка формы карточки
-// (не понял как избавиться от массива)
 function formAddSubmitHandler (evt) { 
-  evt.preventDefault()
-  card[0].name = placeForm.value;
-  card[0].link = placeLink.value;
-  revealCards(card);
-  togglePopup(evt.target);
+  evt.preventDefault();
+  const card = addNewCard({
+     name: placeForm.value, 
+     link: placeLink.value});
+  placeContainer.prepend(card);
+  togglePopup(popupAdd);
 }
 
 
@@ -150,11 +154,11 @@ function formAddSubmitHandler (evt) {
 containerProfile.addEventListener('submit', formEditSubmitHandler);
 containerAdd.addEventListener('submit', formAddSubmitHandler);
 buttonCreate.addEventListener('click', (evt) => togglePopup(evt.target));
-buttonEdit.addEventListener('click', (evt) => togglePopup(evt.target));
-buttonAdd.addEventListener('click', (evt) => togglePopup(evt.target));
-buttonCloseProfile.addEventListener('click', (evt) => togglePopup(evt.target));
-buttonCloseAdd.addEventListener('click', (evt) => togglePopup(evt.target));
-buttonCloseImage.addEventListener('click', (evt) => togglePopup(evt.target));
+buttonEdit.addEventListener('click', ProfileEdit);
+buttonAdd.addEventListener('click', AddPopup);
+buttonCloseProfile.addEventListener('click', ProfileEdit);
+buttonCloseAdd.addEventListener('click', AddPopup);
+buttonCloseImage.addEventListener('click', (evt) =>  togglePopup(evt.target.closest('.popup')));
 revealCards(cards);
 
 
