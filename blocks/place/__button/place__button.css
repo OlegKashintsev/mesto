@@ -1,6 +1,7 @@
 @import url(_remove/place__button_remove.css);
+@import url(_like/place__button_like.css);
 @import url(_like/_active/place__button_like_active.css);
-@import url(_like/_disactive/place__button_like_disactive.css);
+
 
 .place__button {
     border: none;

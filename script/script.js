@@ -31,7 +31,6 @@ const buttonCloseImage = document.querySelector('.popup__button_close_image');  
 const popupFigcaption = document.querySelector('.popup__image_figcaption'); // Подпись картинки в полноэкранном режиме
 
 
-const card = [{}];
 const cards = [
   {
     name: 'Казань',
@@ -62,7 +61,7 @@ const cards = [
 //  Открытие/закрытие попапов
 function togglePopup(popupElement) {
   popupElement.classList.toggle('popup_opened'); 
-}
+};
 
 
 // Открыть картинку в полноэкранном режиме
@@ -72,60 +71,58 @@ function openFullscreenImage(evt) {
   popupFullscreenImage.alt = evt.target.alt;
   popupFigcaption.textContent = evt.target.alt;
   togglePopup(popupImage);
-}
+};
 
 
 // Попап редактирования профиля
-function ProfileEdit() {
+function profileEdit() {
    nameInput.value = nameForm.textContent; 
    professionInput.value = professionForm.textContent; 
    togglePopup(popupProfile);
-}
+};
 
 // Попап добавления новой карточки
-function AddPopup() {
+function addPopup() {
   placeForm.value = ''; 
   placeLink.value = '';
   togglePopup(popupAdd);
-}
+};
 
 // Лайкнуть
 function changeLike(evt) {
   evt.target.classList.toggle('place__button_like_active');
-  evt.target.classList.toggle('place__button_like_disactive');
-  return evt
 };
 
 // Удалить карточку
 function deleteCard(evt) {
   const placeCard = evt.target.closest('.place'); 
-  placeCard.querySelector('.place__button_like_disactive, .place__button_like_active').removeEventListener('click', changeLike);
+  placeCard.querySelector('.place__button_like, .place__button_like_active').removeEventListener('click', changeLike);
   placeCard.querySelector('.place__button_remove').removeEventListener('click', deleteCard);
   placeCard.querySelector('.place__image').removeEventListener('click', openFullscreenImage);
-  placeCard.remove()
+  placeCard.remove();
 };
 
 // Создать новую карточку 
 function addNewCard(item) {
-  const placeElement = placeTemplate.cloneNode(true)
+  const placeElement = placeTemplate.cloneNode(true);
   const placeImage = placeElement.querySelector('.place__image');
   placeImage.src = item.link;
   placeElement.querySelector('.place__title').textContent = item.name;
   placeImage.alt = item.name;
-  placeElement.querySelector('.place__button_like_disactive').addEventListener('click', changeLike)
-  placeElement.querySelector('.place__button_remove').addEventListener('click', deleteCard)
-  placeImage.addEventListener('click', openFullscreenImage)
+  placeElement.querySelector('.place__button_like').addEventListener('click', changeLike);
+  placeElement.querySelector('.place__button_remove').addEventListener('click', deleteCard);
+  placeImage.addEventListener('click', openFullscreenImage);
   return placeElement
 };
 
  //  Добавить карточки в разметку
 function addCard(card) {
-  placeContainer.prepend(addNewCard(card))
+  placeContainer.prepend(addNewCard(card));
 };
 
 
 function revealCards(cards) {
-  cards.forEach(addCard)
+  cards.forEach(addCard);
 }; 
 
 
@@ -142,22 +139,20 @@ function formEditSubmitHandler (evt) {
 // Отправка формы карточки
 function formAddSubmitHandler (evt) { 
   evt.preventDefault();
-  const card = addNewCard({
-     name: placeForm.value, 
-     link: placeLink.value});
+  addCard({name: placeForm.value, link: placeLink.value});
   placeContainer.prepend(card);
   togglePopup(popupAdd);
-}
+};
 
 
 // Обработчики
 containerProfile.addEventListener('submit', formEditSubmitHandler);
 containerAdd.addEventListener('submit', formAddSubmitHandler);
 buttonCreate.addEventListener('click', (evt) => togglePopup(evt.target));
-buttonEdit.addEventListener('click', ProfileEdit);
-buttonAdd.addEventListener('click', AddPopup);
-buttonCloseProfile.addEventListener('click', ProfileEdit);
-buttonCloseAdd.addEventListener('click', AddPopup);
+buttonEdit.addEventListener('click',profileEdit);
+buttonAdd.addEventListener('click', addPopup);
+buttonCloseProfile.addEventListener('click', profileEdit);
+buttonCloseAdd.addEventListener('click', addPopup);
 buttonCloseImage.addEventListener('click', (evt) =>  togglePopup(evt.target.closest('.popup')));
 revealCards(cards);
 
