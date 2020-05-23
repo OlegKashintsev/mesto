@@ -1,6 +1,7 @@
 @import url(_image/popup__button_close_image.css);
 
 .popup__button_close {
+  border: none;
   height: 45px;
   width: 45px;
   padding: 0;

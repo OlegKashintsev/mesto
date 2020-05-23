@@ -2,6 +2,9 @@
 @import url(_profession/popup__input_profession.css);
 @import url(_place/_title/popup__input_place_title.css);
 @import url(_place/_link/popup__input_place_link.css);
+@import url(-error/popup__input-error.css);
+@import url(-error/_active/popup__input-error_active.css);
+
 
 .popup__input {
   border: none;
@@ -23,3 +26,4 @@
     width: 190px;
   }
 }
+

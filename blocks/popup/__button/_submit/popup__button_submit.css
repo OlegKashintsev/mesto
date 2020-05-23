@@ -1,4 +1,4 @@
-.popup__button_create {
+.popup__button_submit {
   height: 50px;
   width: 358px;
   background-color: black;
@@ -8,19 +8,23 @@
   margin-bottom: 37px;
 }
 
-.popup__button_create:hover {
+.popup__button_submit:hover {
   background: rgba(0, 0, 0, 0.8);
   transition: 1s;
 }
+
+.popup__button_submit:disabled {
+  background-color: white;
+}
+
 @media screen and (max-width: 500px) {
-  .popup__button_create {
+  .popup__button_submit {
     width: 260px;
   }
 }
 
 @media screen and (max-width: 420px) {
-  .popup__button_create {
+  .popup__button_submit {
     width: 190px;
   }
 }
-

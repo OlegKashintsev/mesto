@@ -1,0 +1,24 @@
+.popup__button_submit_inactive {
+  height: 50px;
+  width: 358px;
+  border: 1px solid black;
+  background-color: white;
+  color: black;
+  text-align: center;
+  border-radius: 2px;
+  margin-bottom: 37px;
+  opacity: 0.2;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+}
+
+@media screen and (max-width: 500px) {
+  .popup__button_submit_inactive {
+    width: 260px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .popup__button_submit_inactive {
+    width: 190px;
+  }
+}

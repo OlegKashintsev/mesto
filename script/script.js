@@ -1,10 +1,9 @@
-// Попап
-
 //Профиль
 const popupProfile = document.querySelector('.popup_type_profile'); // Попап профиля
 const buttonEdit = document.querySelector('.profile__button_edit'); // Открыть редактирование профиля
 const buttonCloseProfile = document.querySelector('.popup__button_close_profile'); // Закрыть редактирование профиля 
 const containerProfile = document.querySelector('.popup__container_edit'); // Контейнер попапа редактирования профиля
+const popupInput = document.querySelector('.popup__input'); // Все поля ввода
 const nameInput = document.querySelector('.popup__input_name'); // Имя профиля в попап
 const professionInput = document.querySelector('.popup__input_profession'); // Профессия профиля в попап
 const nameForm = document.querySelector('.profile__name'); // Имя профиля на странице
@@ -12,7 +11,7 @@ const professionForm = document.querySelector('.profile__profession'); // Про
 
 //Карточки
 const popupAdd = document.querySelector('.popup_type_add'); // Попап добавления карточки
-const buttonCreate = document.querySelector('.popup__button_create'); // Создать карточку
+const buttonSubmit = document.querySelector('.popup__button_submit'); // Создать карточку
 const buttonAdd = document.querySelector('.profile__button_add'); // Открыть редактирование карточек
 const buttonCloseAdd = document.querySelector('.popup__button_close_add');  // Закрыть редактирование карточек 
 const containerAdd = document.querySelector('.popup__container_add'); // Контейнер попапа добавления карточки
@@ -20,10 +19,8 @@ const placeTemplate = document.querySelector('#card').content; // Шаблон �
 const placeContainer = document.querySelector('.places'); // Контейнер для создания карточки
 
 
-
-
 //Картинки
-const popupImage = document.querySelector('.popup_type_image'); // Открыть картинку по нажатию
+const popupImage = document.querySelector('.popup_type_image'); // Попап картинки
 const placeForm = document.querySelector('.popup__input_place_title'); // Название картинки в попапе
 const placeLink = document.querySelector('.popup__input_place_link'); // Ссылка картинки в попапе
 const popupFullscreenImage = document.querySelector('.popup__image_fullscreen'); // Открыть картинку в полноэкранном режиме 
@@ -60,12 +57,21 @@ const cards = [
 
 //  Открытие/закрытие попапов
 function togglePopup(popupElement) {
-  popupElement.classList.toggle('popup_opened'); 
+   popupElement.classList.toggle('popup_opened'); 
+  if (popupElement.classList.contains('popup_opened')) {
+    document.addEventListener('keyup', (event) => escClose(event, popupElement))
+  }
+  else {document.removeEventListener('keyup', escClose(event, popupElement))}
 };
 
+// Закрытие попапа нажатием Esc
+function escClose(event, popupElement) {
+  if (event.keyCode == 27){ 
+   popupElement.classList.remove('popup_opened');
+ } 
+};
 
 // Открыть картинку в полноэкранном режиме
-
 function openFullscreenImage(evt) {
   popupFullscreenImage.src = evt.target.src;
   popupFullscreenImage.alt = evt.target.alt;
@@ -145,15 +151,30 @@ function formAddSubmitHandler (evt) {
 };
 
 
+
 // Обработчики
 containerProfile.addEventListener('submit', formEditSubmitHandler);
 containerAdd.addEventListener('submit', formAddSubmitHandler);
-buttonCreate.addEventListener('click', (evt) => togglePopup(evt.target));
+buttonSubmit.addEventListener('click', (evt) => togglePopup(evt.target));
 buttonEdit.addEventListener('click',profileEdit);
 buttonAdd.addEventListener('click', addPopup);
 buttonCloseProfile.addEventListener('click', profileEdit);
 buttonCloseAdd.addEventListener('click', addPopup);
-buttonCloseImage.addEventListener('click', (evt) =>  togglePopup(evt.target.closest('.popup')));
+buttonCloseImage.addEventListener('click',(evt) => togglePopup(evt.target));
+
+popupImage.addEventListener('click', function(e) {
+  if (!popupFullscreenImage.contains(e.target)) {
+    togglePopup(popupImage);
+  }
+})
+popupProfile.addEventListener('click', function(e) {
+  if (!containerProfile.contains(e.target)) {
+     togglePopup(popupProfile);
+  }
+})
+popupAdd.addEventListener('click', function(e) {
+  if (!containerAdd.contains(e.target)) {
+     togglePopup(popupAdd);
+  }
+});
 revealCards(cards);
-
-
