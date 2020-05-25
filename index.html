@@ -68,9 +68,7 @@
                 class="popup__input popup__input_name"
                 type="text"
                 placeholder="Имя"
-                required
-                minlength="2"
-                maxlength="40"
+                required pattern="[A-Za-zА-Яа-яЁё -]{2,40}"
               />
               <span class="popup__input-error" id="name-input-error"></span>
               <input
@@ -110,12 +108,18 @@
                 minlength="1"
                 maxlength="30"
               />
+              <!-- В соответствии с заданием ошибка о валидации не появляется 
+                до тех пор пока вводимые данные являются валидными.
+                Для поля названия это любой текст количеством символом от 1 до 30, 
+                (т.е. невалидным поле может быть только в случае пропуска),
+                для поля ссылки валидными данными считается только URL -->
               <span class="popup__input-error" id='place-input-error'></span>
               <input
                 id='link-input'
                 class="popup__input popup__input_place_link"
                 type="url"
                 placeholder="Ссылка на картинку"
+                required
               />
               <span class="popup__input-error" id='link-input-error'></span>
             </div>

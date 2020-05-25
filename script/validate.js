@@ -16,7 +16,7 @@ const checkInputValidity = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage);
   } else {
-    hideInputError(formElement, inputElement);
+    hideInputError(formElement, inputElement, inputElement.validationMessage);
   }
 };
 
@@ -49,14 +49,16 @@ const toggleButtonState = (inputList, buttonSubmit) => {
 };
 
 const enableValidation = () => {
-const formList = Array.from(document.querySelectorAll('.popup__container'));
-formList.forEach((formElement) => {
-      setEventListeners(formElement);
-  });
-};
-
-enableValidation();
-
+  const formList = Array.from(document.querySelectorAll('.popup__container'));
+  formList.forEach((formElement) => {
+        setEventListeners(formElement);
+    });
+  };
+  
+  enableValidation();
+  
+ 
+  
 // const enableValidation = ({...data}) => {
 //   const formSelector = data.formSelector;
 //   const inputSelector = data.inputSelector;

@@ -85,6 +85,8 @@ function profileEdit() {
    nameInput.value = nameForm.textContent; 
    professionInput.value = professionForm.textContent; 
    togglePopup(popupProfile);
+   hideInputError(containerProfile, nameInput);
+   hideInputError(containerProfile, professionInput);
 };
 
 // Попап добавления новой карточки
@@ -131,8 +133,6 @@ function revealCards(cards) {
   cards.forEach(addCard);
 }; 
 
-
-
 // Сохранить редакцию профиля
 function formEditSubmitHandler (evt) {       
   evt.preventDefault();
@@ -170,6 +170,7 @@ popupImage.addEventListener('click', function(e) {
 popupProfile.addEventListener('click', function(e) {
   if (!containerProfile.contains(e.target)) {
      togglePopup(popupProfile);
+     hideInputError(containerProfile, nameInput);
   }
 })
 popupAdd.addEventListener('click', function(e) {
