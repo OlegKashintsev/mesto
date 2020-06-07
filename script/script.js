@@ -1,3 +1,5 @@
+import Card from './Card.js';
+
 //Профиль
 const popupProfile = document.querySelector('.popup_type_profile'); // Попап профиля
 const buttonEdit = document.querySelector('.profile__button_edit'); // Открыть редактирование профиля
@@ -27,7 +29,7 @@ const popupFullscreenImage = document.querySelector('.popup__image_fullscreen');
 const buttonCloseImage = document.querySelector('.popup__button_close_image');  // Закрыть отображение картинки в полноэкранном режиме 
 const popupFigcaption = document.querySelector('.popup__image_figcaption'); // Подпись картинки в полноэкранном режиме
 
-
+// export {popupImage, placeForm, popupFullscreenImage}
 const cards = [
   {
     name: 'Казань',
@@ -111,27 +113,27 @@ function deleteCard(evt) {
 };
 
 // Создать новую карточку 
-function addNewCard(item) {
-  const placeElement = placeTemplate.cloneNode(true);
-  const placeImage = placeElement.querySelector('.place__image');
-  placeImage.src = item.link;
-  placeElement.querySelector('.place__title').textContent = item.name;
-  placeImage.alt = item.name;
-  placeElement.querySelector('.place__button_like').addEventListener('click', changeLike);
-  placeElement.querySelector('.place__button_remove').addEventListener('click', deleteCard);
-  placeImage.addEventListener('click', openFullscreenImage);
-  return placeElement
-};
+// function addNewCard(item) {
+//   const placeElement = placeTemplate.cloneNode(true);
+//   const placeImage = placeElement.querySelector('.place__image');
+//   placeImage.src = item.link;
+//   placeElement.querySelector('.place__title').textContent = item.name;
+//   placeImage.alt = item.name;
+//   placeElement.querySelector('.place__button_like').addEventListener('click', changeLike);
+//   placeElement.querySelector('.place__button_remove').addEventListener('click', deleteCard);
+//   placeImage.addEventListener('click', openFullscreenImage);
+//   return placeElement
+// };
 
- //  Добавить карточки в разметку
-function addCard(card) {
-  placeContainer.prepend(addNewCard(card));
-};
+//  //  Добавить карточки в разметку
+// function addCard(card) {
+//   placeContainer.prepend(addNewCard(card));
+// };
 
 
-function revealCards(cards) {
-  cards.forEach(addCard);
-}; 
+// function revealCards(cards) {
+//   cards.forEach(addCard);
+// }; 
 
 // Сохранить редакцию профиля
 function formEditSubmitHandler (evt) {       
@@ -178,4 +180,4 @@ popupAdd.addEventListener('click', function(e) {
      togglePopup(popupAdd);
   }
 });
-revealCards(cards);
+// revealCards(cards);
