@@ -17,8 +17,8 @@ const buttonSubmit = document.querySelector('.popup__button_submit'); // Соз�
 const buttonAdd = document.querySelector('.profile__button_add'); // Открыть редактирование карточек
 const buttonCloseAdd = document.querySelector('.popup__button_close_add');  // Закрыть редактирование карточек 
 const containerAdd = document.querySelector('.popup__container_add'); // Контейнер попапа добавления карточки
-const placeTemplate = document.querySelector('#card').content; // Шаблон карточки
-const placeContainer = document.querySelector('.places'); // Контейнер для создания карточки
+export const placeTemplate = document.querySelector('#card').content; // Шаблон карточки
+export const placeContainer = document.querySelector('.places'); // Контейнер для создания карточки
 
 
 //Картинки
@@ -29,7 +29,6 @@ export const popupFullscreenImage = document.querySelector('.popup__image_fullsc
 const buttonCloseImage = document.querySelector('.popup__button_close_image');  // Закрыть отображение картинки в полноэкранном режиме 
 export const popupFigcaption = document.querySelector('.popup__image_figcaption'); // Подпись картинки в полноэкранном режиме
 
-// export {popupImage, placeForm, popupFullscreenImage}
 const cards = [
   {
     name: 'Казань',
@@ -73,13 +72,13 @@ function escClose(event, popupElement) {
  } 
 };
 
-// Открыть картинку в полноэкранном режиме
-function openFullscreenImage(evt) {
-  popupFullscreenImage.src = evt.target.src;
-  popupFullscreenImage.alt = evt.target.alt;
-  popupFigcaption.textContent = evt.target.alt;
-  togglePopup(popupImage);
-};
+// // Открыть картинку в полноэкранном режиме
+// function openFullscreenImage(evt) {
+//   popupFullscreenImage.src = evt.target.src;
+//   popupFullscreenImage.alt = evt.target.alt;
+//   popupFigcaption.textContent = evt.target.alt;
+//   togglePopup(popupImage);
+// };
 
 
 // Попап редактирования профиля
@@ -99,9 +98,10 @@ function addPopup() {
 };
 
 // Лайкнуть
-function changeLike(evt) {
-  evt.target.classList.toggle('place__button_like_active');
-};
+// function changeLike(evt) {
+//   evt.target.classList.toggle('place__button_like_active');
+// };
+
 
 // Удалить карточку
 function deleteCard(evt) {
@@ -112,18 +112,18 @@ function deleteCard(evt) {
   placeCard.remove();
 };
 
-// Создать новую карточку 
-// function addNewCard(item) {
-//   const placeElement = placeTemplate.cloneNode(true);
-//   const placeImage = placeElement.querySelector('.place__image');
-//   placeImage.src = item.link;
-//   placeElement.querySelector('.place__title').textContent = item.name;
-//   placeImage.alt = item.name;
-//   placeElement.querySelector('.place__button_like').addEventListener('click', changeLike);
-//   placeElement.querySelector('.place__button_remove').addEventListener('click', deleteCard);
-//   placeImage.addEventListener('click', openFullscreenImage);
-//   return placeElement
-// };
+
+function addNewCard(item) {
+  const placeElement = placeTemplate.cloneNode(true);
+  const placeImage = placeElement.querySelector('.place__image');
+  placeImage.src = item.link;
+  placeElement.querySelector('.place__title').textContent = item.name;
+  placeImage.alt = item.name;
+  placeElement.querySelector('.place__button_like').addEventListener('click', changeLike);
+  placeElement.querySelector('.place__button_remove').addEventListener('click', deleteCard);
+  placeImage.addEventListener('click', openFullscreenImage);
+  return placeElement
+};
 
  //  Добавить карточки в разметку
 function addCard(card) {
@@ -180,4 +180,4 @@ popupAdd.addEventListener('click', function(e) {
      togglePopup(popupAdd);
   }
 });
-// revealCards(cards);
+revealCards(cards);
