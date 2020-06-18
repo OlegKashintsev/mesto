@@ -1,58 +1,24 @@
-const cards = [
-    {
-      name: 'Казань',
-      link: "./images/kazan.jpg"
-  },
-  {
-      name: 'Казбег',
-      link: "./images/kazbeg.jpg"
-  },
-  {
-      name: 'Алтай',
-      link: "./images/altay.jpg"
-  },
-  {
-      name: 'Йошкар-Ола',
-      link: "./images/yoshkar-ola.jpg"
-  },
-  {
-      name: 'Тюмень',
-      link: "./images/tyumen.jpg"
-  },
-  {
-      name: 'Байкал',
-      link: "./images/baikal.jpg"
-  }
-  ];
 'use strict';
 import {popupImage, popupFullscreenImage, popupFigcaption, togglePopup} from './index.js';
 
 
 export class Card {
-    constructor(item, cardSelector) {
-        this._link = item.link;
-        this._name = item.name;
+    constructor(data, cardSelector) {
+        this._link = data.link;
+        this._alt = data.name;
+        this._name = data.name;
         this._cardSelector = cardSelector;
     }
 
 
-_addNewCard(item) {
-    const placeElement = document
+_getTemplate() {
+    const cardElement = document
     .querySelector(this._cardSelector)
     .content.querySelector('.place')
     .cloneNode(true);
-    this._element = addNewCard();
-    this._setEventListeners();
-    this._element.querySelector('.place__image').src = this._link;
-    this._element.querySelector('place__image').alt = this._name
-    this._element.querySelector('place__title').textContent = this._name;
-    return placeElement
+ 
+    return cardElement
 }
-
-
-// _setEventListeners() {
-//     this._element.querySelector('.')
-// }
 
 // лайкнуть
 _changeLike() { 
@@ -66,13 +32,37 @@ _changeLike() {
     popupFigcaption.textContent = this._element.querySelector('.place__image').alt;
     togglePopup(popupImage);
   };
-  
+//приватный метод delete
+_deleteButtonHandler(){
+        this._element.querySelector('.place__button_remove').closest('.place').remove();
+     }
+
+
+//приватный метод установки слушателей
+_setEventListeners(){
+    // лайк
+    this._element.querySelector('.place__button_like').addEventListener('click', ()=>{this._changeLike()});
+    // удалить
+    this._element.querySelector('.place__button_remove').addEventListener('click', ()=>{this._deleteButtonHandler()});
+    // zoom
+    this._element.querySelector('.place__image').addEventListener('click',()=>{this._openFullscreenImage()});
+  }
+
+   //публичный метод создания карточки
+   generateCard(){
+    this._element = this._getTemplate();
+    this._setEventListeners();
+    this._element.querySelector('.place__title').textContent =this._name;
+    const cardElementImage = this._element.querySelector('.place__image');
+    cardElementImage.src=this._link;
+    cardElementImage.alt = this._alt;
+
+    return this._element;
+  }
+
 }
 
-//установка слушателей
 
-
-  
 
 
 
