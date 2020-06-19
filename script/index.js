@@ -1,4 +1,5 @@
 import {Card} from './Card.js';
+import {togglePopup, popupImage, popupFullscreenImage, placeForm} from './Util.js';
 
 //Профиль
 const popupProfile = document.querySelector('.popup_type_profile'); // Попап профиля
@@ -22,11 +23,6 @@ const placeContainer = document.querySelector('.places'); // Контейнер 
 //Картинки
 const buttonCloseImage = document.querySelector('.popup__button_close_image');  // Закрыть отображение картинки в полноэкранном режиме 
 const placeLink = document.querySelector('.popup__input_place_link'); // Ссылка картинки в попапе
-export const popupImage = document.querySelector('.popup_type_image'); // Попап картинки
-export const placeForm = document.querySelector('.popup__input_place_title'); // Название картинки в попапе
-export const popupFullscreenImage = document.querySelector('.popup__image_fullscreen'); // Открыть картинку в полноэкранном режиме 
-export const popupFigcaption = document.querySelector('.popup__image_figcaption'); // Подпись картинки в полноэкранном режиме
-
 const cards = [
   {
     name: 'Казань',
@@ -54,21 +50,6 @@ const cards = [
 }
 ];
 
-//  Открытие/закрытие попапов
-export function togglePopup(popupElement) {
-   popupElement.classList.toggle('popup_opened'); 
-  if (popupElement.classList.contains('popup_opened')) {
-    document.addEventListener('keyup', (event) => escClose(event, popupElement))
-  }
-  else {document.removeEventListener('keyup', escClose(event, popupElement))}
-};
-
-// Закрытие попапа нажатием клавиши Esc
-function escClose(event, popupElement) {
-  if (event.keyCode == 27){ 
-   popupElement.classList.remove('popup_opened');
- } 
-};
 
 // Попап редактирования профиля
 function profileEdit() {

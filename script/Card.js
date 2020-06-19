@@ -1,6 +1,5 @@
 'use strict';
-import {popupImage, popupFullscreenImage, popupFigcaption, togglePopup} from './index.js';
-
+import {togglePopup, popupImage, popupFullscreenImage, popupFigcaption} from './Util.js';
 
 export class Card {
     constructor(data, cardSelector) {
@@ -37,7 +36,6 @@ _deleteButtonHandler(){
         this._element.querySelector('.place__button_remove').closest('.place').remove();
      }
 
-
 //приватный метод установки слушателей
 _setEventListeners(){
     // лайк
@@ -48,7 +46,7 @@ _setEventListeners(){
     this._element.querySelector('.place__image').addEventListener('click',()=>{this._openFullscreenImage()});
   }
 
-   //публичный метод создания карточки
+//публичный метод создания карточки
    generateCard(){
     this._element = this._getTemplate();
     this._setEventListeners();
