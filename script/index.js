@@ -1,5 +1,7 @@
+import {togglePopup, popupImage, popupFullscreenImage, placeForm, formConfig} from './Util.js';
 import {Card} from './Card.js';
-import {togglePopup, popupImage, popupFullscreenImage, placeForm} from './Util.js';
+import {FormValidator} from './FormValidator.js';
+
 
 //Профиль
 const popupProfile = document.querySelector('.popup_type_profile'); // Попап профиля
@@ -50,14 +52,19 @@ const cards = [
 }
 ];
 
+const formProfessionValidation = new FormValidator(formConfig, containerProfile);
+formProfessionValidation.enableValidation();
+
+const formPlaceValidation = new FormValidator(formConfig, containerAdd);
+formPlaceValidation.enableValidation();
+
 
 // Попап редактирования профиля
 function profileEdit() {
    nameInput.value = nameForm.textContent; 
    professionInput.value = professionForm.textContent; 
    togglePopup(popupProfile);
-   hideInputError(containerProfile, nameInput);
-   hideInputError(containerProfile, professionInput);
+   
 };
 
 // Попап добавления новой карточки
@@ -111,8 +118,7 @@ popupImage.addEventListener('click', function(e) {
 popupProfile.addEventListener('click', function(e) {
   if (!containerProfile.contains(e.target)) {
      togglePopup(popupProfile);
-     hideInputError(containerProfile, nameInput);
-  }
+     }
 })
 popupAdd.addEventListener('click', function(e) {
   if (!containerAdd.contains(e.target)) {

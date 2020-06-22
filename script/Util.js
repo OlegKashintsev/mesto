@@ -2,7 +2,15 @@ export const placeForm = document.querySelector('.popup__input_place_title'); //
 export const popupFullscreenImage = document.querySelector('.popup__image_fullscreen'); // Открыть картинку в полноэкранном режиме 
 export const popupFigcaption = document.querySelector('.popup__image_figcaption'); // Подпись картинки в полноэкранном режиме
 export const popupImage = document.querySelector('.popup_type_image'); // Попап картинки
-
+export const formConfig = {
+  formSelector: '.popup__container',
+  inputSelector: '.popup__input',
+  inputErrorSelector: '.popup__input-error',
+  submitButtonSelector: '.popup__button_submit',
+  inactiveButtonClass: 'popup__button_submit_inactive',
+  inputErrorClass: 'popup__input-error_active'
+  }
+  
 //  Открытие/закрытие попапов
 export function togglePopup(popupElement) {
     popupElement.classList.toggle('popup_opened'); 
@@ -18,6 +26,8 @@ export function togglePopup(popupElement) {
     popupElement.classList.remove('popup_opened');
   } 
  };
+
+ 
  
 
 
