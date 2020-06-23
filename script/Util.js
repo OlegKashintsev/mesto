@@ -2,6 +2,7 @@ export const placeForm = document.querySelector('.popup__input_place_title'); //
 export const popupFullscreenImage = document.querySelector('.popup__image_fullscreen'); // Открыть картинку в полноэкранном режиме 
 export const popupFigcaption = document.querySelector('.popup__image_figcaption'); // Подпись картинки в полноэкранном режиме
 export const popupImage = document.querySelector('.popup_type_image'); // Попап картинки
+const Escape = 27; // код клавиши Escape 
 export const formConfig = {
   formSelector: '.popup__container',
   inputSelector: '.popup__input',
@@ -22,7 +23,7 @@ export function togglePopup(popupElement) {
  
  // Закрытие попапа нажатием клавиши Esc
  function escClose(event, popupElement) {
-   if (event.keyCode == 27){ 
+   if (event.key == 'Escape'){ 
     popupElement.classList.remove('popup_opened');
   } 
  };

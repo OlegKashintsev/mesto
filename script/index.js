@@ -1,6 +1,7 @@
 import {togglePopup, popupImage, popupFullscreenImage, placeForm, formConfig} from './Util.js';
 import {Card} from './Card.js';
 import {FormValidator} from './FormValidator.js';
+import {cards} from './CardsArray.js';
 
 
 //Профиль
@@ -25,33 +26,9 @@ const placeContainer = document.querySelector('.places'); // Контейнер 
 //Картинки
 const buttonCloseImage = document.querySelector('.popup__button_close_image');  // Закрыть отображение картинки в полноэкранном режиме 
 const placeLink = document.querySelector('.popup__input_place_link'); // Ссылка картинки в попапе
-const cards = [
-  {
-    name: 'Казань',
-    link: "./images/kazan.jpg"
-},
-{
-    name: 'Казбег',
-    link: "./images/kazbeg.jpg"
-},
-{
-    name: 'Алтай',
-    link: "./images/altay.jpg"
-},
-{
-    name: 'Йошкар-Ола',
-    link: "./images/yoshkar-ola.jpg"
-},
-{
-    name: 'Тюмень',
-    link: "./images/tyumen.jpg"
-},
-{
-    name: 'Байкал',
-    link: "./images/baikal.jpg"
-}
-];
 
+
+// Валидация
 const formProfessionValidation = new FormValidator(formConfig, containerProfile);
 formProfessionValidation.enableValidation();
 
@@ -60,7 +37,7 @@ formPlaceValidation.enableValidation();
 
 
 // Попап редактирования профиля
-function profileEdit() {
+function openProfileEditForm() {
    nameInput.value = nameForm.textContent; 
    professionInput.value = professionForm.textContent; 
    togglePopup(popupProfile);
@@ -68,7 +45,7 @@ function profileEdit() {
 };
 
 // Попап добавления новой карточки
-function addPopup() {
+function openAddPlaceForm() {
   placeForm.value = ''; 
   placeLink.value = '';
   togglePopup(popupAdd);
@@ -104,10 +81,10 @@ function formAddSubmitHandler (evt) {
 containerProfile.addEventListener('submit', formEditSubmitHandler);
 containerAdd.addEventListener('submit', formAddSubmitHandler);
 buttonSubmit.addEventListener('click', (evt) => togglePopup(evt.target));
-buttonEdit.addEventListener('click',profileEdit);
-buttonAdd.addEventListener('click', addPopup);
-buttonCloseProfile.addEventListener('click', profileEdit);
-buttonCloseAdd.addEventListener('click', addPopup);
+buttonEdit.addEventListener('click',openProfileEditForm);
+buttonAdd.addEventListener('click', openAddPlaceForm);
+buttonCloseProfile.addEventListener('click', openProfileEditForm);
+buttonCloseAdd.addEventListener('click', openAddPlaceForm);
 buttonCloseImage.addEventListener('click',(evt) => togglePopup(evt.target));
 
 popupImage.addEventListener('click', function(e) {

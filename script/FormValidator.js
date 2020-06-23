@@ -16,7 +16,7 @@ _showInputError = (formElement, inputElement, errorMessage, formConfig) => {
 // Приватный метод: удаляет класс с ошибкой
 _hideInputError = (formElement, inputElement, formConfig) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.remove(formConfig.inputErrorSelector); // Скрываем сообщение об щибке
+  inputElement.classList.remove(formConfig.inputErrorSelector); // Скрываем сообщение об ошибке
   errorElement.classList.remove(formConfig.inputErrorClass); // Очищаем ошибку
   errorElement.textContent = '';
 };

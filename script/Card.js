@@ -1,4 +1,5 @@
 'use strict';
+
 import {togglePopup, popupImage, popupFullscreenImage, popupFigcaption} from './Util.js';
 
 export class Card {
@@ -16,19 +17,20 @@ _getTemplate() {
     .content.querySelector('.place')
     .cloneNode(true);
  
-    return cardElement
+    return cardElement;
 }
 
 // лайкнуть
 _changeLike() { 
     this._element.querySelector('.place__button_like').classList.toggle('place__button_like_active');
-  };
+  }
 
 // Открыть картинку в полноэкранном режиме
  _openFullscreenImage() {
-    popupFullscreenImage.src = this._element.querySelector('.place__image').src;
-    popupFullscreenImage.alt = this._element.querySelector('.place__image').alt;
-    popupFigcaption.textContent = this._element.querySelector('.place__image').alt;
+  const placeImage = this._element.querySelector('.place__image'); // Картинка (фотография) карточки 
+    popupFullscreenImage.src = placeImage.src;
+    popupFullscreenImage.alt = placeImage.alt;
+    popupFigcaption.textContent = placeImage.alt;
     togglePopup(popupImage);
   };
 //приватный метод delete
