@@ -7,7 +7,8 @@
 ### Используемые технологии
 * Адаптивные свойства (max-width, min-width);
 * HTML, CSS;
-* JavaScript. 
+* JavaScript;
+* Webpack, Babel.
 
 Ссылка на страницу на GitHub:
 https://olegkashintsev.github.io/mesto/

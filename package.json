@@ -1,0 +1,23 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "Импортозамещение Instagram, пользователи будут делиться фотографиями, нажимать символ \"Любо\" под ними, выражая свою симпатию.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OlegKashintsev/mesto.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OlegKashintsev/mesto/issues"
+  },
+  "homepage": "https://github.com/OlegKashintsev/mesto#readme",
+  "dependencies": {
+    "jquery": "^3.5.1"
+  }
+}
