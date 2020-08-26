@@ -1,6 +1,6 @@
 'use strict';
 
-import {togglePopup, popupImage, popupFullscreenImage, popupFigcaption} from './Util.js';
+import {togglePopup, popupImage, popupFullscreenImage, popupFigcaption} from '../utils/Util.js';
 
 export class Card {
     constructor(data, cardSelector) {

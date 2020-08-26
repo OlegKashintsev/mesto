@@ -1,7 +1,7 @@
-import {togglePopup, popupImage, popupFullscreenImage, placeForm, formConfig} from './Util.js';
-import {Card} from './Card.js';
-import {FormValidator} from './FormValidator.js';
-import {cards} from './CardsArray.js';
+import {togglePopup, popupImage, popupFullscreenImage, placeForm, formConfig} from '../utils/Util.js';
+import {Card} from '../components/Card.js';
+import {FormValidator} from '../components/FormValidator.js';
+import {cards} from '../utils/CardsArray.js';
 
 
 //Профиль

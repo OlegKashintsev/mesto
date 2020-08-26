@@ -1,7 +1,7 @@
 export const cards = [
     {
       name: 'Казань',
-      link: "./images/kazan.jpg"
+      link: "../images/kazan.jpg"
   },
   {
       name: 'Казбег',
