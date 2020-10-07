@@ -3,6 +3,7 @@ export const popupFullscreenImage = document.querySelector('.popup__image_fullsc
 export const popupFigcaption = document.querySelector('.popup__image_figcaption'); // Подпись картинки в полноэкранном режиме
 export const popupImage = document.querySelector('.popup_type_image'); // Попап картинки
 const Escape = 27; // код клавиши Escape 
+
 export const formConfig = {
   formSelector: '.popup__container',
   inputSelector: '.popup__input',

@@ -1,22 +1,57 @@
-// класс Popup, отвечает за открытие и закрытие попапа
+
+//  Открытие/закрытие попапов
 export default class Popup {
   constructor (popupSelector) {
-    this._popupElement =  document.querySelector(popupSelector);
-    this._popupCloseBtn = this._popupElement.querySelector('.popup__close-button');
+    this._popupElement = document.querySelector(popupSelector);
+    this._popupCloseBtn = this._popupElement.querySelector('.popup__button_close');
     this._popupInputs = this._popupElement.querySelectorAll('.popup__input');
-    //приватный метод: закрытие попапа клавишей Esc
-    this._handleEscClose = (evt) => {
-      if(evt.key==='Escape') {
+      //приватный метод: закрытие попапа клавишей Esc
+    this._handleEscClose =(evt) => {
+      if (event.key ==='Escape'){
         this.closePopup();
       }
-    };
-    //приватный метод: закрытие попапа по клику на оверлей
+    }
     this._handleOverlayClose = (evt) => {
       if(evt.target.classList.contains('popup')){
         this.closePopup();
-      }
-    };
   }
+}
+
+
+// export function togglePopup(popupElement) {
+//   popupElement.classList.toggle('popup_opened'); 
+//  if (popupElement.classList.contains('popup_opened')) {
+//    document.addEventListener('keyup', (event) => escClose(event, popupElement))
+//  }
+//  else {document.removeEventListener('keyup', escClose(event, popupElement))}
+// };
+
+// // Закрытие попапа нажатием клавиши Esc
+// function escClose(event, popupElement) {
+//  if (event.key == 'Escape'){ 
+//   popupElement.classList.remove('popup_opened');
+// } 
+// };
+
+// класс Popup, отвечает за открытие и закрытие попапа
+// export default class Popup {
+//   constructor (popupSelector) { 
+//     this._popupElement =  document.querySelector(popupSelector);
+//     this._popupCloseBtn = this._popupElement.querySelector('.popup__close-button');
+//     this._popupInputs = this._popupElement.querySelectorAll('.popup__input');
+//     //приватный метод: закрытие попапа клавишей Esc
+//     this._handleEscClose = (evt) => {
+//       if(evt.key==='Escape') {
+//         this.closePopup();
+//       }
+//     };
+//     //приватный метод: закрытие попапа по клику на оверлей
+//     this._handleOverlayClose = (evt) => {
+//       if(evt.target.classList.contains('popup')){
+//         this.closePopup();
+//       }
+//     };
+//   }
 
   //публичный метод: открытие окна
   openPopup() {
