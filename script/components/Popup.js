@@ -7,7 +7,7 @@ export default class Popup {
     this._popupInputs = this._popupElement.querySelectorAll('.popup__input');
       //приватный метод: закрытие попапа клавишей Esc
     this._handleEscClose =(evt) => {
-      if (event.key ==='Escape'){
+      if (evt.key ==='Escape'){
         this.closePopup();
       }
     }
@@ -16,6 +16,7 @@ export default class Popup {
         this.closePopup();
   }
 }
+  };
 
 
 // export function togglePopup(popupElement) {

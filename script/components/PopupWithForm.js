@@ -9,7 +9,7 @@ export default class PopupWithForm extends Popup{
     this._popupElement = document.querySelector(popupSelector);
     this._handleFormSubmit = handleFormSubmit;//CALLBACK
     this._errorInput = this._popupElement.querySelectorAll(formConfig.inputErrorSelector);
-    this._submitButton = this._popupElement.querySelector('.popup__save-button');// кнопка сабмита
+    this._submitButton = this._popupElement.querySelector('.popup__button_submit');// кнопка сабмита
     this._submitButtonTextContent = this._submitButton.textContent; //сохранение текста кнопки начального
     this._inputsErrorClear = (popupCharObj) => {
       this._errorInput.forEach(element =>{
@@ -52,7 +52,7 @@ export default class PopupWithForm extends Popup{
     //публичный метод: установка слушателя
     setEventListeners() {
       super.setEventListeners();
-      this._popupElement.querySelector('.popup__form').addEventListener('submit', (evt) => {
+      this._popupElement.querySelector('.popup__container').addEventListener('submit', (evt) => {
         // Эта строчка отменяет стандартную отправку формы.
         evt.preventDefault();
         // добавим вызов функции _handleFormSubmit
@@ -64,7 +64,7 @@ export default class PopupWithForm extends Popup{
  //публичный метод:перезаписываем родительский метод закрытия окна
     closePopup(){
       super.closePopup();
-      this._popupElement.querySelector('.popup__form').reset();
+      this._popupElement.querySelector('.popup__container').reset();
       this._inputsErrorClear(formConfig);
     }
 }

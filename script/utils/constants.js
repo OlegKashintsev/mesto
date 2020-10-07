@@ -28,54 +28,49 @@ export const cards = [
   ];
 
 
-//   export const formConfig = {
-//     formSelector: '.popup__container',
-//     inputSelector: '.popup__input',
-//     inputErrorSelector: '.popup__input-error',
-//     submitButtonSelector: '.popup__button_submit',
-//     inactiveButtonClass: 'popup__button_submit_inactive',
-//     inputErrorClass: 'popup__input-error_active',
-//     errorClass: 'popup__input-error_hidden'
-//     }  
+  export const formConfig = {
+    formSelector: '.popup__container',
+    inputSelector: '.popup__input',
+    inputErrorSelector: '.popup__input-error',
+    submitButtonSelector: '.popup__button_submit',
+    inactiveButtonClass: 'popup__button_submit_inactive',
+    inputErrorClass: 'popup__input-error_active',
+    errorClass: 'popup__input-error_hidden'
+    }  
 
-//Профиль
-// const popupProfile = document.querySelector('.popup_type_profile'); // Попап профиля
-// export const buttonEdit = document.querySelector('.profile__button_edit'); // Открыть редактирование профиля
-// export const buttonCloseProfile = document.querySelector('.popup__button_close_profile'); // Закрыть редактирование профиля 
-// export const containerProfile = document.querySelector('.popup__container_edit'); // Контейнер попапа редактирования профиля
-// export const nameInput = document.querySelector('.popup__input_name'); // Имя профиля в попап
-// export const professionInput = document.querySelector('.popup__input_profession'); // Профессия профиля в попап
-// export const nameForm = document.querySelector('.profile__name'); // Имя профиля на странице
-// export const professionForm = document.querySelector('.profile__profession'); // Профессия профиля на странице
-// export const popupProfile = document.querySelector('.popup_type_profile'); // Попап профиля
+// Профиль
+export const popupProfile = document.querySelector('.popup_type_profile'); // Попап профиля
+export const buttonEdit = document.querySelector('.profile__button_edit'); // Открыть редактирование профиля
+export const buttonCloseProfile = document.querySelector('.popup__button_close_profile'); // Закрыть редактирование профиля 
+export const containerProfile = document.querySelector('.popup__container_edit'); // Контейнер попапа редактирования профиля
+export const nameInput = document.querySelector('.popup__input_name'); // Имя профиля в попап
+export const professionInput = document.querySelector('.popup__input_profession'); // Профессия профиля в попап
+export const nameForm = document.querySelector('.profile__name'); // Имя профиля на странице
+export const professionForm = document.querySelector('.profile__profession'); // Профессия профиля на странице
+export const Escape = 27; // код клавиши Escape 
 
-
-// //Zoom изображения
-// export const buttonCloseImage = document.querySelector('.popup__button_close_image');  // Закрыть отображение картинки в полноэкранном режиме 
-// export const popupFullscreenImage = document.querySelector('.popup__image_fullscreen'); // Открыть картинку в полноэкранном режиме 
-// export const popupFigcaption = document.querySelector('.popup__image_figcaption'); // Подпись картинки в полноэкранном режиме
-// export const placeLink = document.querySelector('.popup__input_place_link'); // Ссылка картинки в попапе
-// export const popupImage = document.querySelector('.popup_type_image'); // Попап картинки
-
-  
-// //create forms massive
-// export const popupSection = Array.from(document.querySelectorAll('.popup'));//секция с формами
-// export const placeContainer = document.querySelector('.places'); // Контейнер для создания карточки
-// export const cardListSelector = '.places'// раздел "карточки" для querySelector в классе Section
- 
-
+//Zoom изображения
+export const buttonCloseImage = document.querySelector('.popup__button_close_image');  // Закрыть отображение картинки в полноэкранном режиме 
+export const popupFullscreenImage = document.querySelector('.popup__image_fullscreen'); // Открыть картинку в полноэкранном режиме 
+export const popupFigcaption = document.querySelector('.popup__image_figcaption'); // Подпись картинки в полноэкранном режиме
+export const placeLink = document.querySelector('.popup__input_place_link'); // Ссылка картинки в попапе
+export const popupImage = document.querySelector('.popup_type_image'); // Попап картинки
 
 
   
+//create forms massive
+export const popupSection = Array.from(document.querySelectorAll('.popup'));//секция с формами
+export const placeContainer = document.querySelector('.places'); // Контейнер для создания карточки
+export const buttonSubmit = document.querySelector('.popup__button_submit'); // Создать карточку
 
-//   export const placeForm = document.querySelector('#edit-place');//форма добавления места
-//   export const addCardButton = document.querySelector('.profile__add-button');//кнопка добавления нового места
-//   export const closePlaceFormBtn = document.querySelector('#place-close');//кнопка закрытия формы добавления места
-  
-//   export const EditAvatar = document.querySelector('#edit-avatar');//форма редактирования аватара
-//   
+export const popupAdd = document.querySelector('.popup_type_add');//попап добавления карточки
+export const buttonAdd = document.querySelector('.profile__button_add'); //кнопка добавления карточки 
+export const buttonCloseAdd = document.querySelector('.popup__button_close_add');  // Закрыть редактирование карточек 
+export const inputPlace = document.querySelector('.popup__input_place_title'); //ввод названия места
+export const containerAdd = document.querySelector('.popup__container_add'); // Контейнер попапа добавления карточки
 
-//   export const inputPlace = document.querySelector('#popup_place');//ввод названия места
+
+
 
   
   

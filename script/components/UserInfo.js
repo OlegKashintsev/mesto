@@ -36,7 +36,7 @@ import {
     nameInput,
     professionInput
   
-  } from '../pages/index.js';
+  } from '../utils/constants.js';
   
   export default class UserInfo {
     constructor ({userNameSelector, userProfessionSelector, userAvatarSelector}) {
