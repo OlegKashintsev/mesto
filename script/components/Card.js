@@ -1,6 +1,6 @@
 'use strict';
 
-import {popupImage, popupFullscreenImage, popupFigcaption} from '../utils/constants.js';
+// import {popupImage, popupFullscreenImage, popupFigcaption} from '../utils/constants.js';
 
 export class Card {
     constructor(data, cardSelector) {
@@ -8,6 +8,7 @@ export class Card {
         this._alt = data.name;
         this._name = data.name;
         this._cardSelector = cardSelector;
+        
     }
 
 
@@ -31,7 +32,7 @@ _changeLike() {
     popupFullscreenImage.src = placeImage.src;
     popupFullscreenImage.alt = placeImage.alt;
     popupFigcaption.textContent = placeImage.alt;
-    togglePopup(popupImage);
+  
   };
 //приватный метод delete
 _deleteButtonHandler(){
@@ -56,15 +57,10 @@ _setEventListeners(){
     const cardElementImage = this._element.querySelector('.place__image');
     cardElementImage.src=this._link;
     cardElementImage.alt = this._alt;
-
     return this._element;
   }
 
 }
-
-
-
-
 
 // export default class Card{
 //   constructor({

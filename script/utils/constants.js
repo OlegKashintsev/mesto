@@ -1,5 +1,5 @@
-// карточки "по умолчанию"
 
+// карточки "по умолчанию"
 export const cards = [
     {
       name: 'Казань',
@@ -63,6 +63,7 @@ export const popupSection = Array.from(document.querySelectorAll('.popup'));//с
 export const placeContainer = document.querySelector('.places'); // Контейнер для создания карточки
 export const buttonSubmit = document.querySelector('.popup__button_submit'); // Создать карточку
 
+//Карточки
 export const popupAdd = document.querySelector('.popup_type_add');//попап добавления карточки
 export const buttonAdd = document.querySelector('.profile__button_add'); //кнопка добавления карточки 
 export const buttonCloseAdd = document.querySelector('.popup__button_close_add');  // Закрыть редактирование карточек 

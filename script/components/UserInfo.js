@@ -56,10 +56,7 @@ import {
     //публичный метод: принимает новые данные пользователя и добавляет их на страницу
     setUserInfo(popupData) {
       this._userName.textContent = popupData.name;
-      this._userProfession.textContent = popupData.about;//.profession - ето id Попапа!!!!!
-      this._userAvatar.src = popupData.avatar;
-    }
-    setNewUserAvatar(profileData){
-      this._userAvatar.src = profileData.avatar;
-    }
+      this._userProfession.textContent = popupData.about;
+         }
+  
   }

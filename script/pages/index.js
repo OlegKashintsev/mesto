@@ -81,58 +81,55 @@ formProfessionValidation.enableValidation();
 const formPlaceValidation = new FormValidator(formConfig, containerAdd);
 formPlaceValidation.enableValidation();
 
-  // //экземпляр UserInfo
-  // const userProfile = new UserInfo({
-  //   userNameSelector:'.profile__name',
-  //   userLifestyleSelector: '.profile__profession',
-  // });
+  //экземпляр UserInfo
+  const userProfile = new UserInfo({
+    userNameSelector:'.profile__name',
+    userLifestyleSelector: '.profile__profession',
+  });
 
   // userProfile.setUserInfo(userData);
 
-// // Попап редактирования профиля
-// function openProfileEditForm() {
-//    nameInput.value = nameForm.textContent; 
-//    professionInput.value = professionForm.textContent; 
-//    togglePopup(popupProfile);
-   
-// };
+// Попап редактирования профиля
+buttonEdit.addEventListener('click', () => {
+  const formValues  = userProfile.getUserInfo();
+  nameInput.value =  formValues.name;
+  professionInput.value =  formValues.about;//.lifestyle
+  popupProfile.openPopup()
+});
 
-// // Попап добавления новой карточки
-// function openAddPlaceForm() {
-//   placeForm.value = ''; 
-//   placeLink.value = '';
-//   togglePopup(popupAdd);
-// };
+// Попап добавления новой карточки
+buttonAdd.addEventListener('click', () =>{
+  popupAdd.openPopup();
+  popupAdd.clearInputsValues();
+});
 
+cards.forEach((item)=>{
+  const card = new Card(item, '#card');
+  const cardElement = card.generateCard();
 
+  placeContainer.append(cardElement);
+})
 
-// cards.forEach((item)=>{
-//   const card = new Card(item, '#card');
-//   const cardElement = card.generateCard();
+// Сохранить редакцию профиля
+function formEditSubmitHandler (evt) {       
+  evt.preventDefault();
+ nameForm.textContent = nameInput.value;
+ professionForm.textContent = professionInput.value;
+ togglePopup(popupProfile);
+};
 
-//   placeContainer.append(cardElement);
-// })
+// Отправка формы карточки
+function formAddSubmitHandler (evt) { 
+  evt.preventDefault();
+  const userCard = new Card ({name: placeForm.value, link: placeLink.value, alt: placeForm.value}, '#card')
+  const cardElement = userCard.generateCard();
+  placeContainer.prepend(cardElement);
+  placeForm.value ='';
+  placeLink.value ='';
+  togglePopup(popupAdd);
+};
 
-// // Сохранить редакцию профиля
-// function formEditSubmitHandler (evt) {       
-//   evt.preventDefault();
-//  nameForm.textContent = nameInput.value;
-//  professionForm.textContent = professionInput.value;
-//  togglePopup(popupProfile);
-// };
-
-// // Отправка формы карточки
-// function formAddSubmitHandler (evt) { 
-//   evt.preventDefault();
-//   const userCard = new Card ({name: placeForm.value, link: placeLink.value, alt: placeForm.value}, '#card')
-//   const cardElement = userCard.generateCard();
-//   placeContainer.prepend(cardElement);
-//   placeForm.value ='';
-//   placeLink.value ='';
-//   togglePopup(popupAdd);
-// };
-
-// // Обработчики
+// Обработчики
 // containerProfile.addEventListener('submit', formEditSubmitHandler);
 // containerAdd.addEventListener('submit', formAddSubmitHandler);
 // buttonSubmit.addEventListener('click', (evt) => togglePopup(evt.target));
@@ -160,139 +157,139 @@ formPlaceValidation.enableValidation();
 
 
 
-    //экземпляр UserInfo
-    const userProfile = new UserInfo({
-      userNameSelector:'.profile__name',
-      userLifestyleSelector: '.profile__profession',
-       });
+//     //экземпляр UserInfo
+//     const userProfile = new UserInfo({
+//       userNameSelector:'.profile__name',
+//       userLifestyleSelector: '.profile__profession',
+//        });
 
-    userProfile.setUserInfo(userData);
+//     userProfile.setUserInfo(userData);
 
 
-//     //создаём экземпля карточки
-    const cardCreateFunction = (item, userId, index) => {
-      const card = new Card({
-        data:item,
-        myId:userData._id,
-        cardSelector:'.card',
-        handleCardClick:(popupData)=>{
-          fullSizeImg.openPopup(popupData);
-        },
-        deleteButtonHandler: (cardId)=>{
-          popupDelete.openPopup(cardId);
-          popupDelete.setSubmitAction(()=>{
-            // popupDelete.openPopup();
-            popupDelete.addBtnDeleting()
-            api.deleteCard(cardId)
-              .then(() => {
-                card.removeCard();//it's a life!
-              })
-              .catch(err => console.error(err))//выведем ошибку
-            .finally(()=>
-              popupDelete.removeBtnDeleting(),
-              popupDelete.closePopup()
-            )
-          })
-          // popupDelete.openPopup();
-        },
+// //     //создаём экземпля карточки
+//     const cardCreateFunction = (item, userId, index) => {
+//       const card = new Card({
+//         data:item,
+//         myId:userData._id,
+//         cardSelector:'.card',
+//         handleCardClick:(popupData)=>{
+//           fullSizeImg.openPopup(popupData);
+//         },
+//         deleteButtonHandler: (cardId)=>{
+//           popupDelete.openPopup(cardId);
+//           popupDelete.setSubmitAction(()=>{
+//             // popupDelete.openPopup();
+//             popupDelete.addBtnDeleting()
+//             api.deleteCard(cardId)
+//               .then(() => {
+//                 card.removeCard();//it's a life!
+//               })
+//               .catch(err => console.error(err))//выведем ошибку
+//             .finally(()=>
+//               popupDelete.removeBtnDeleting(),
+//               popupDelete.closePopup()
+//             )
+//           })
+//           // popupDelete.openPopup();
+//         },
        
-      });
+//       });
 
-//         const cardElement = card.generateCard(userId, true);
-//         if (index === true){
-//           cardList.addItem(cardElement);
-//         } else {
-//           cardList.addUserItem(cardElement);
-//         }
-//         // cardList.addItem(cardElement, true);
-//         return card
+// //         const cardElement = card.generateCard(userId, true);
+// //         if (index === true){
+// //           cardList.addItem(cardElement);
+// //         } else {
+// //           cardList.addUserItem(cardElement);
+// //         }
+// //         // cardList.addItem(cardElement, true);
+// //         return card
 
+// //       }
+
+// //       //создаем массив начальных карточек
+//       const cardList = new Section ({
+//         items: initialCards,
+//         renderer:  cardCreateFunction,
+//         },
+//         cardListSelector
+//       );
+
+// //     //экземпляр PopupWithImage
+//     const fullSizeImg = new PopupWithImage ('.popup__image_fullscreen');
+//     //форма добавления места
+//     const placeFormAdd = new PopupWithForm({
+//       popupSelector:'#edit-place',
+//       handleFormSubmit:(popupData)=>{
+//       placeFormAdd.addBtnLoading();
+//         api.postNewCadr(popupData)
+//         .then ((popupData)=>{
+//           cardCreateFunction(popupData, false);
+//           // const cardElement = card.generateCard();
+//           // cardList.addItem(cardElement, true);
+//         })
+//         .catch(err => console.error(err))//выведем ошибку
+//         .finally(()=>
+//         placeFormAdd.removeBtnLoading(),
+//         placeFormAdd.closePopup()
+//         )
 //       }
+//     });
 
-//       //создаем массив начальных карточек
-      const cardList = new Section ({
-        items: initialCards,
-        renderer:  cardCreateFunction,
-        },
-        cardListSelector
-      );
+// //    //попап редактирования профиля
+//     const profileFormEdit = new PopupWithForm({
+//       popupSelector: '#edit-profile',
+//       handleFormSubmit:(profileData) => {
+//         profileFormEdit.addBtnLoading();
+//         api.patchUserInfo(profileData)
+//         .then((profileData)=> {
+//           userProfile.setUserInfo(profileData);
+//         })
+//         .catch(err => console.error(err))//выведем ошибку
+//         .finally(()=>
+//         profileFormEdit.removeBtnLoading(),
+//         profileFormEdit.closePopup()
+//         )
+//       }
+//     });
 
-//     //экземпляр PopupWithImage
-    const fullSizeImg = new PopupWithImage ('.popup__image_fullscreen');
-    //форма добавления места
-    const placeFormAdd = new PopupWithForm({
-      popupSelector:'#edit-place',
-      handleFormSubmit:(popupData)=>{
-      placeFormAdd.addBtnLoading();
-        api.postNewCadr(popupData)
-        .then ((popupData)=>{
-          cardCreateFunction(popupData, false);
-          // const cardElement = card.generateCard();
-          // cardList.addItem(cardElement, true);
-        })
-        .catch(err => console.error(err))//выведем ошибку
-        .finally(()=>
-        placeFormAdd.removeBtnLoading(),
-        placeFormAdd.closePopup()
-        )
-      }
-    });
-
-//    //попап редактирования профиля
-    const profileFormEdit = new PopupWithForm({
-      popupSelector: '#edit-profile',
-      handleFormSubmit:(profileData) => {
-        profileFormEdit.addBtnLoading();
-        api.patchUserInfo(profileData)
-        .then((profileData)=> {
-          userProfile.setUserInfo(profileData);
-        })
-        .catch(err => console.error(err))//выведем ошибку
-        .finally(()=>
-        profileFormEdit.removeBtnLoading(),
-        profileFormEdit.closePopup()
-        )
-      }
-    });
-
-//     попап редактирования аватара
-    const avatarFormEdit = new PopupWithForm({
-      popupSelector:'#edit-avatar',
-      handleFormSubmit:(profileData) =>{
-        avatarFormEdit.addBtnLoading();
-        api.patchUserAvatar(profileData.avatar_url)
-        .then((data)=>{
-          userProfile.setNewUserAvatar(data);
-        })
-        .catch(err => console.error(err))//выведем ошибку
-        .finally(()=>
-        avatarFormEdit.removeBtnLoading(),
-        avatarFormEdit.closePopup()
-        )
-      }
-    });
+// //     попап редактирования аватара
+//     const avatarFormEdit = new PopupWithForm({
+//       popupSelector:'#edit-avatar',
+//       handleFormSubmit:(profileData) =>{
+//         avatarFormEdit.addBtnLoading();
+//         api.patchUserAvatar(profileData.avatar_url)
+//         .then((data)=>{
+//           userProfile.setNewUserAvatar(data);
+//         })
+//         .catch(err => console.error(err))//выведем ошибку
+//         .finally(()=>
+//         avatarFormEdit.removeBtnLoading(),
+//         avatarFormEdit.closePopup()
+//         )
+//       }
+//     });
    
-//     //рисуем массив начальных карточек
-    cardList.renderItems();
+// //     //рисуем массив начальных карточек
+//     cardList.renderItems();
 
-//     //открытие формы "Редактировать профиль"
-    buttonEdit.addEventListener('click', () => {
-      const formValues  = userProfile.getUserInfo();
-      nameInput.value =  formValues.name;
-      professionInput.value =  formValues.about;//.lifestyle
-     popupProfile.openPopup()
-    });
+// //     //открытие формы "Редактировать профиль"
+//     buttonEdit.addEventListener('click', () => {
+//       const formValues  = userProfile.getUserInfo();
+//       nameInput.value =  formValues.name;
+//       professionInput.value =  formValues.about;//.lifestyle
+//      popupProfile.openPopup()
+//     });
 
 
-//     //открытие формы "Новое место"
-    addCardButton.addEventListener('click', () =>{
-      placeFormAdd.openPopup();
-      placeFormAdd.clearInputsValues();
-    });
+// //     //открытие формы "Новое место"
+//     addCardButton.addEventListener('click', () =>{
+//       placeFormAdd.openPopup();
+//       placeFormAdd.clearInputsValues();
+//     });
 
-//     //открытие формы "Редактируем аватар"
-    avatarEditButton.addEventListener('click', ()=> {
-      avatarFormEdit.openPopup();
-      avatarFormEdit.clearInputsValues();
-    })
+// //     //открытие формы "Редактируем аватар"
+//     avatarEditButton.addEventListener('click', ()=> {
+//       avatarFormEdit.openPopup();
+//       avatarFormEdit.clearInputsValues();
+//     })
 

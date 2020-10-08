@@ -56,7 +56,7 @@ export default class Popup {
 
   //публичный метод: открытие окна
   openPopup() {
-    this._popupElement.classList.remove('popup_hidden');
+    this._popupElement.classList.toggle('popup_opened');
     //добавляем слушатель нажатия клавиши Esc
     document.addEventListener('keyup', this._handleEscClose);
     //добавляем слушатель клика на оверлей
@@ -65,7 +65,7 @@ export default class Popup {
 
  //публичный метод: закрытие окна
  closePopup() {
-  this._popupElement.classList.add('popup_hidden');
+  this._popupElement.classList.toggle('popup_opened');
 
   //удаляем слушатель нажатия клавиши Esc
   document.removeEventListener('keyup', this._handleEscClose);
