@@ -1,7 +1,7 @@
 //класс PopupWithForm
 
 import Popup from './Popup.js';
-import { formConfig } from '../utils/constants.js';
+import formConfig from '../utils/constants.js';
 
 export default class PopupWithForm extends Popup{
   constructor({popupSelector, handleFormSubmit}){

@@ -39,10 +39,10 @@ import {
   } from '../utils/constants.js';
   
   export default class UserInfo {
-    constructor ({userNameSelector, userProfessionSelector, userAvatarSelector}) {
+    constructor ({userNameSelector, userProfessionSelector}) {
       this._userName = document.querySelector(userNameSelector);
       this._userProfession = document.querySelector(userProfessionSelector);
-      this._userAvatar = document.querySelector(userAvatarSelector);
+     
     }
   
     //публичный метод: возвращает объект с данными пользователя

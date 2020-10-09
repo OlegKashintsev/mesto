@@ -3,19 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <title>Mesto</title>
   </head>
   <body>
     <div class="page">
       <header class="header">
-        <img class="header__logo" src="./images/logo.svg" alt="Логотип сайта" />
+        <img
+          class="header__logo"
+          src="../images/logo.svg"
+          alt="Логотип сайта"
+        />
       </header>
       <main class="content">
         <section class="profile">
           <img
             class="profile__pic"
-            src="./images/who.jpg"
+            src="../images/who.jpg"
             alt="Фотография профиля"
           />
           <div class="profile__info">
@@ -44,7 +47,7 @@
               type="button"
               class="place__button place__button_remove"
             ></button>
-            <img class="place__image" src="" alt="" />
+            <img class="place__image" src="#" alt="" />
             <div class="place__text">
               <h3 class="place__title"></h3>
               <button
@@ -68,7 +71,8 @@
                 class="popup__input popup__input_name"
                 type="text"
                 placeholder="Имя"
-                required pattern="[A-Za-zА-Яа-яЁё -]{2,40}"
+                required
+                pattern="[A-Za-zА-Яа-яЁё -]{2,40}"
               />
               <span class="popup__input-error" id="name-input-error"></span>
               <input
@@ -100,7 +104,7 @@
             <p class="popup__title">Новое место</p>
             <div class="popup__text">
               <input
-                id='place-input'
+                id="place-input"
                 class="popup__input popup__input_place_title"
                 type="text"
                 placeholder="Название"
@@ -108,15 +112,15 @@
                 minlength="1"
                 maxlength="30"
               />
-              <span class="popup__input-error" id='place-input-error'></span>
+              <span class="popup__input-error" id="place-input-error"></span>
               <input
-                id='link-input'
+                id="link-input"
                 class="popup__input popup__input_place_link"
                 type="url"
                 placeholder="Ссылка на картинку"
                 required
               />
-              <span class="popup__input-error" id='link-input-error'></span>
+              <span class="popup__input-error" id="link-input-error"></span>
             </div>
             <button type="submit" class="popup__button popup__button_submit">
               Создать
@@ -127,7 +131,7 @@
         <section class="popup popup_type_image">
           <div class="popup__image_container">
             <button type="button" class="popup__button_close_image"></button>
-            <img src="" alt="" class="popup__image_fullscreen" />
+            <img src="#" alt="" class="popup__image_fullscreen" />
             <p class="popup__image_figcaption"></p>
           </div>
         </section>
@@ -136,9 +140,5 @@
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
       </footer>
     </div>
-    <script type='module' src="./script/pages/index.js"></script>
-    <script type='module' src="./script/components/Card.js"></script>
-    <script type='module' src="./script/utils/Util.js"></script>
-    <script type='module' src="./script/components/FormValidator.js"></script>
-    </body>
+  </body>
 </html>

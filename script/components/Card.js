@@ -1,15 +1,11 @@
-'use strict';
-
-// import {popupImage, popupFullscreenImage, popupFigcaption} from '../utils/constants.js';
-
-export class Card {
-    constructor(data, cardSelector) {
+export default class Card {
+    constructor(data, cardSelector,handleCardClick) {
         this._link = data.link;
         this._alt = data.name;
         this._name = data.name;
         this._cardSelector = cardSelector;
-        
-    }
+        this._handleCardClick = handleCardClick;
+        }
 
 
 _getTemplate() {
@@ -19,6 +15,13 @@ _getTemplate() {
     .cloneNode(true);
  
     return cardElement;
+}
+
+ //публичный метод удаления карточки из разметки
+ removeCard(){
+  this._element.remove();
+  // Зануляем ссылку на элемент, чтобы сборщик мусора начал работать.
+  this._element = null;
 }
 
 // лайкнуть

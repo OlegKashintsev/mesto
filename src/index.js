@@ -1,11 +1,13 @@
+import '../pages/index.css';
+
 // import {togglePopup, popupImage, popupFullscreenImage, placeForm, formConfig, cardListSelector, nameInput, professionInput, popupProfile} from '../utils/constants.js';
-import {Card} from '../components/Card.js';
-import {FormValidator} from '../components/FormValidator.js';
-import {cards} from '../utils/constants.js';
-import PopupWithImage from '../components/PopupWithImage.js';
-import PopupWithForm from '../components/PopupWithForm.js';
-import Section from '../components/Section.js';
-import UserInfo from '../components/UserInfo.js';
+import Card from '../script/components/Card.js';
+import {FormValidator} from '../script/components/FormValidator.js';
+import {cards} from '../script/utils/constants.js';
+import PopupWithImage from '../script/components/PopupWithImage.js';
+import PopupWithForm from '../script/components/PopupWithForm.js';
+import Section from '../script/components/Section.js';
+import UserInfo from '../script/components/UserInfo.js';
 import {
   placeContainer,
   nameInput,
@@ -18,7 +20,7 @@ import {
   buttonEdit,
   buttonAdd,
   buttonSubmit
-} from '../utils/constants.js';
+} from '../script/utils/constants.js';
 
 
 // export const fullsizeImg = document.querySelector('.popup__fullsize-img');//полноразмерное изображение
@@ -118,6 +120,24 @@ function formEditSubmitHandler (evt) {
  togglePopup(popupProfile);
 };
 
+ //форма редактирования профиля
+ const profileFormEdit = new PopupWithForm({
+  popupSelector: '.popup_type_profile',
+  handleFormSubmit:(profileData) => {
+    profileFormEdit.addBtnLoading();
+    api.patchUserInfo(profileData)
+    .then((profileData)=> {
+      userProfile.setUserInfo(profileData);
+    })
+    .catch(err => console.error(err))//выведем ошибку
+    .finally(()=>
+    profileFormEdit.removeBtnLoading(),
+    profileFormEdit.closePopup()
+    )
+  }
+})
+
+
 // Отправка формы карточки
 function formAddSubmitHandler (evt) { 
   evt.preventDefault();
@@ -128,6 +148,32 @@ function formAddSubmitHandler (evt) {
   placeLink.value ='';
   togglePopup(popupAdd);
 };
+
+const cardCreateFunction = (item) => {
+  const card = new Card({
+    data:item,
+    cardSelector:'#element-template',
+    handleCardClick:(popupData)=>{
+      fullSizeImg.openPopup(popupData);
+    },
+    });
+
+    const cardElement = card.generateCard(true);
+    if (index === true){
+      cardList.addItem(cardElement);
+    } else {
+      cardList.addUserItem(cardElement);
+    }
+    // cardList.addItem(cardElement, true);
+    return card
+  }
+  
+const cardList = new Section ({
+  items: cards,
+  renderer: cardCreateFunction,
+},
+placeContainer
+);
 
 // Обработчики
 // containerProfile.addEventListener('submit', formEditSubmitHandler);
