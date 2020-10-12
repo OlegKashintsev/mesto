@@ -3,7 +3,7 @@ import '../pages/index.css';
 // import {togglePopup, popupImage, popupFullscreenImage, placeForm, formConfig, cardListSelector, nameInput, professionInput, popupProfile} from '../utils/constants.js';
 import Card from '../script/components/Card.js';
 import {FormValidator} from '../script/components/FormValidator.js';
-import {cards} from '../script/utils/constants.js';
+import {cards, nameForm, professionForm} from '../script/utils/constants.js';
 import PopupWithImage from '../script/components/PopupWithImage.js';
 import PopupWithForm from '../script/components/PopupWithForm.js';
 import Section from '../script/components/Section.js';
@@ -13,10 +13,11 @@ import {
   nameInput,
   professionInput,
   formConfig,
-  containerProfile,
-  containerAdd,
-  popupImage,
   popupProfile,
+  popupAdd,
+  containerAdd,
+  containerProfile,
+  popupImage,
   buttonEdit,
   buttonAdd,
   buttonSubmit
@@ -108,53 +109,48 @@ buttonAdd.addEventListener('click', () =>{
 cards.forEach((item)=>{
   const card = new Card(item, '#card');
   const cardElement = card.generateCard();
-
   placeContainer.append(cardElement);
 })
 
-// Сохранить редакцию профиля
-function formEditSubmitHandler (evt) {       
-  evt.preventDefault();
- nameForm.textContent = nameInput.value;
- professionForm.textContent = professionInput.value;
- togglePopup(popupProfile);
-};
 
- //форма редактирования профиля
- const profileFormEdit = new PopupWithForm({
-  popupSelector: '.popup_type_profile',
-  handleFormSubmit:(profileData) => {
-    profileFormEdit.addBtnLoading();
-    api.patchUserInfo(profileData)
-    .then((profileData)=> {
-      userProfile.setUserInfo(profileData);
-    })
-    .catch(err => console.error(err))//выведем ошибку
-    .finally(()=>
-    profileFormEdit.removeBtnLoading(),
-    profileFormEdit.closePopup()
-    )
-  }
-})
+const popupProfileObject = new PopupWithForm('.popup_type_profile', () => {
+  nameForm.textContent = nameInput.textContent;
+  professionForm.textContent = professionInput.textContent;
+});
+
+buttonEdit.addEventListener('click', () => {
+  popupProfileObject.open();
+  nameInput.textContent = nameForm.textContent;
+  professionInput.textContent = professionForm.textContent;
+});
+
+// // Сохранить редакцию профиля
+// function formEditSubmitHandler (evt) {       
+//   evt.preventDefault();
+//  nameForm.textContent = nameInput.value;
+//  professionForm.textContent = professionInput.value;
+//  togglePopup(popupProfile);
+// };
 
 
-// Отправка формы карточки
-function formAddSubmitHandler (evt) { 
-  evt.preventDefault();
-  const userCard = new Card ({name: placeForm.value, link: placeLink.value, alt: placeForm.value}, '#card')
-  const cardElement = userCard.generateCard();
-  placeContainer.prepend(cardElement);
-  placeForm.value ='';
-  placeLink.value ='';
-  togglePopup(popupAdd);
-};
+
+// // Отправка формы карточки
+// function formAddSubmitHandler (evt) { 
+//   evt.preventDefault();
+//   const userCard = new Card ({name: placeForm.value, link: placeLink.value, alt: placeForm.value}, '#card')
+//   const cardElement = userCard.generateCard();
+//   placeContainer.prepend(cardElement);
+//   placeForm.value ='';
+//   placeLink.value ='';
+//   togglePopup(popupAdd);
+// };
 
 const cardCreateFunction = (item) => {
   const card = new Card({
     data:item,
-    cardSelector:'#element-template',
+    cardSelector:'#card',
     handleCardClick:(popupData)=>{
-      fullSizeImg.openPopup(popupData);
+      popupFullscreenImage.openPopup(popupData);
     },
     });
 
