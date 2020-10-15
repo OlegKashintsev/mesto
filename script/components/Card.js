@@ -1,68 +1,75 @@
 export default class Card {
-    constructor(data, cardSelector,handleCardClick) {
-        this._link = data.link;
-        this._alt = data.name;
-        this._name = data.name;
-        this._cardSelector = cardSelector;
-        this._handleCardClick = handleCardClick;
-        }
+  constructor(data, cardSelector, handleCardClick) {
+    this._link = data.link;
+    this._alt = data.name;
+    this._name = data.name;
+    this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
+  }
 
-
-_getTemplate() {
+  _getTemplate() {
     const cardElement = document
-    .querySelector(this._cardSelector)
-    .content.querySelector('.place')
-    .cloneNode(true);
- 
+      .querySelector(this._cardSelector)
+      .content.querySelector(".place")
+      .cloneNode(true);
+
     return cardElement;
-}
-
- //публичный метод удаления карточки из разметки
- removeCard(){
-  this._element.remove();
-  // Зануляем ссылку на элемент, чтобы сборщик мусора начал работать.
-  this._element = null;
-}
-
-// лайкнуть
-_changeLike() { 
-    this._element.querySelector('.place__button_like').classList.toggle('place__button_like_active');
   }
 
-// Открыть картинку в полноэкранном режиме
- _openFullscreenImage() {
-  const placeImage = this._element.querySelector('.place__image'); // Картинка (фотография) карточки 
-    popupFullscreenImage.src = placeImage.src;
-    popupFullscreenImage.alt = placeImage.alt;
-    popupFigcaption.textContent = placeImage.alt;
-  
-  };
-//приватный метод delete
-_deleteButtonHandler(){
-        this._element.querySelector('.place__button_remove').closest('.place').remove();
-     }
+  //публичный метод удаления карточки из разметки
+  removeCard() {
+    this._element.remove();
+    // Зануляем ссылку на элемент, чтобы сборщик мусора начал работать.
+    this._element = null;
+  }
 
-//приватный метод установки слушателей
-_setEventListeners(){
+  // лайкнуть
+  _changeLike() {
+    this._element
+      .querySelector(".place__button_like")
+      .classList.toggle("place__button_like_active");
+  }
+
+  //приватный метод delete
+  _deleteButtonHandler() {
+    this._element
+      .querySelector(".place__button_remove")
+      .closest(".place")
+      .remove();
+  }
+
+  //приватный метод установки слушателей
+  _setEventListeners() {
     // лайк
-    this._element.querySelector('.place__button_like').addEventListener('click', ()=>{this._changeLike()});
+    this._element
+      .querySelector(".place__button_like")
+      .addEventListener("click", () => {
+        this._changeLike();
+      });
     // удалить
-    this._element.querySelector('.place__button_remove').addEventListener('click', ()=>{this._deleteButtonHandler()});
+    this._element
+      .querySelector(".place__button_remove")
+      .addEventListener("click", () => {
+        this._deleteButtonHandler();
+      });
     // zoom
-    this._element.querySelector('.place__image').addEventListener('click',()=>{this._openFullscreenImage()});
+    this._element
+      .querySelector(".place__image")
+      .addEventListener("click", () => {
+        this._handleCardClick(this._element);
+      });
   }
 
-//публичный метод создания карточки
-   generateCard(){
+  //публичный метод создания карточки
+  generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
-    this._element.querySelector('.place__title').textContent =this._name;
-    const cardElementImage = this._element.querySelector('.place__image');
-    cardElementImage.src=this._link;
+    this._element.querySelector(".place__title").textContent = this._name;
+    const cardElementImage = this._element.querySelector(".place__image");
+    cardElementImage.src = this._link;
     cardElementImage.alt = this._alt;
     return this._element;
   }
-
 }
 
 // export default class Card{
@@ -107,7 +114,6 @@ _setEventListeners(){
 //     // Зануляем ссылку на элемент, чтобы сборщик мусора начал работать.
 //     this._element = null;
 //   }
-
 
 //   //приватный метод установка слушателей
 //   _setEventListeners(){
