@@ -1,7 +1,7 @@
-import "../pages/index.css";
+import "./pages/index.css";
 //импортируем модули и константы
-import Card from "../script/components/Card.js";
-import PopupWithImage from "../script/components/PopupWithImage.js";
+import Card from "./script/components/Card.js";
+import PopupWithImage from "./script/components/PopupWithImage.js";
 import {
   cards,
   placeContainerSelector,
@@ -13,12 +13,13 @@ import {
   buttonAddSelector,
   popupProfileSelector,
   popupAddSelector,
-} from "../script/utils/constants.js";
-import Section from "../script/components/Section.js";
-import PopupWithForm from "../script/components/PopupWithForm.js";
+} from "./script/utils/constants.js";
+import Section from "./script/components/Section.js";
+import PopupWithForm from "./script/components/PopupWithForm.js";
 // import Api from '../components/Api.js';
 // import PopupWithDelConfirm from '../components/PopupWithDelConfiirm';
-import UserInfo from "../script/components/UserInfo.js";
+import UserInfo from "./script/components/UserInfo.js";
+import FormValidator from "./script/components/FormValidator";
 
 const section = new Section(
   {
@@ -27,6 +28,11 @@ const section = new Section(
   },
   placeContainerSelector
 );
+
+//Инициирование валидации
+new FormValidator(popupProfileSelector);
+new FormValidator(popupAddSelector);
+
 
 //экземпляр UserInfo
 const userProfile = new UserInfo({
@@ -43,11 +49,8 @@ const popupProfile = new PopupWithForm(popupProfileSelector, (userInfo) => {
 //открытие попапа добавления карточки
 const buttonAddElement = document.querySelector(buttonAddSelector);
 const addPlacePopup = new PopupWithForm(popupAddSelector, (addUserPlace) => {
-    section.addUserItem(addUserPlace)
-    console.log(addUserPlace)
+  section.addUserItem(addUserPlace)
 });
-
-
 
 //открытие попапа зума изображения
 const popupZoom = new PopupWithImage(popupImageSelector);
@@ -56,17 +59,15 @@ const popupZoom = new PopupWithImage(popupImageSelector);
 buttonEditElement.addEventListener("click", () => {
   const userInformation = userProfile.getUserInfo();
   const nameInputElement = document.querySelector(nameInputSelector);
-  const professionInputElement = document.querySelector(
-    professionInputSelector
-  );
+  const professionInputElement = document.querySelector(professionInputSelector);
   nameInputElement.value = userInformation.userName;
   professionInputElement.value = userInformation.userProfession;
   popupProfile.openPopup();
-});
+ });
 
 //слушатель на открытие попапа добавления места
 buttonAddElement.addEventListener("click", () => {
-  addPlacePopup.openPopup();
+   addPlacePopup.openPopup();
 });
 
 function cardCreateFunction(item) {

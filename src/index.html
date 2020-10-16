@@ -38,26 +38,7 @@
             ></button>
           </div>
         </section>
-
         <section class="places"></section>
-
-        <template id="card">
-          <div class="place">
-            <button
-              type="button"
-              class="place__button place__button_remove"
-            ></button>
-            <img class="place__image" src="#" alt="" />
-            <div class="place__text">
-              <h3 class="place__title"></h3>
-              <button
-                type="button"
-                class="place__button place__button_like"
-              ></button>
-            </div>
-          </div>
-        </template>
-
         <div class="popup popup_type_profile">
           <form class="popup__container popup__container_edit" novalidate>
             <button
@@ -68,7 +49,7 @@
             <div class="popup__text">
               <input
                 id="name-input"
-                name ="name"
+                name="name"
                 class="popup__input popup__input_name"
                 type="text"
                 placeholder="Имя"
@@ -131,7 +112,6 @@
             </button>
           </form>
         </div>
-
         <section class="popup popup_type_image">
           <div class="popup__image_container">
             <button type="button" class="popup__button_close"></button>
@@ -139,6 +119,22 @@
             <p class="popup__image_figcaption"></p>
           </div>
         </section>
+        <template id="card">
+          <div class="place">
+            <button
+              type="button"
+              class="place__button place__button_remove"
+            ></button>
+            <img class="place__image" src="#" alt="" />
+            <div class="place__text">
+              <h3 class="place__title"></h3>
+              <button
+                type="button"
+                class="place__button place__button_like"
+              ></button>
+            </div>
+          </div>
+        </template>
       </main>
       <footer class="footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>

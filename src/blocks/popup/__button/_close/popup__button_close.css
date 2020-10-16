@@ -5,7 +5,7 @@
   height: 45px;
   width: 45px;
   padding: 0;
-  background: url("../../../../images/closeicon.svg"), no-repeat;
+  background: url("../../../../../images/closeicon.svg"), no-repeat;
   position: absolute;
   top: -50px;
   right: -30px;

@@ -2,7 +2,7 @@
 
 import Popup from "./Popup.js";
 import formConfig from "../utils/constants.js";
-import FormValidator from "./FormValidator.js";
+
 
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, formSubmitCallback) {
@@ -13,7 +13,7 @@ export default class PopupWithForm extends Popup {
     );
     this._submitButton = this._popupElement.querySelector(".popup__button_submit"); // кнопка сабмита
     this._submitButtonTextContent = this._submitButton.textContent; //сохранение текста кнопки начального
-    this._formValidator = new FormValidator(popupSelector); // создаём валидацию
+    // this._formValidator = new FormValidator(popupSelector); // создаём валидацию
   }
 
    //приватный метод: собирает данные всех полей формы
@@ -57,6 +57,7 @@ export default class PopupWithForm extends Popup {
       evt.preventDefault();
       this._formSubmitCallback(this._getInputValues());
       this.closePopup()
+      this._submitButton.disabled = true;
     }
   
 
@@ -68,6 +69,6 @@ _removeEventListeners() {
   closePopup() {
     super.closePopup();
     this._popupElement.querySelector(".popup__container").reset();
-    this._formValidator.deleteAllErrors();
+    deleteAllErrors();
   }
 }

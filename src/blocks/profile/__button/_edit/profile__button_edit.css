@@ -1,7 +1,7 @@
 .profile__button_edit {
   height: 24px;
   width: 24px;
-  background: url("../../../../images/editbutton_main.svg");
+  background: url("../../../../../images/editbutton_main.svg");
   background-repeat: no-repeat;
   background-position: center;
   box-sizing: border-box;
@@ -19,7 +19,7 @@
     width: 18px;
     height: 18px;
     margin-top: 20px;
-    background: url("../../../../images/editbutton_mobile.svg");
+    background: url("../../../../../images/editbutton_mobile.svg");
     background-repeat: no-repeat;
     background-position: center;
     box-sizing: border-box;

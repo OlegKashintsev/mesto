@@ -1,7 +1,7 @@
 .profile__button_add {
   height: 50px;
   width: 150px;
-  background: url("../../../../images/addbutton_main.svg");
+  background: url("../../../../../images/addbutton_main.svg");
   background-repeat: no-repeat;
   background-position: center;
   box-sizing: border-box;
@@ -16,7 +16,7 @@
 @media screen and (max-width: 880px) {
   .profile__button_add {
     margin-top: 36px;
-    background: url("../../../../images/addbutton_mobile.svg");
+    background: url("../../../../../images/addbutton_mobile.svg");
     /*Повтор свойств из базового состояния, иначе отображается неадекватно*/
     background-repeat: no-repeat;
     background-position: center;
