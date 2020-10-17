@@ -13,6 +13,7 @@ import {
   buttonAddSelector,
   popupProfileSelector,
   popupAddSelector,
+  buttonSubmitSelector,
 } from "./script/utils/constants.js";
 import Section from "./script/components/Section.js";
 import PopupWithForm from "./script/components/PopupWithForm.js";
@@ -30,9 +31,8 @@ const section = new Section(
 );
 
 //Инициирование валидации
-new FormValidator(popupProfileSelector);
-new FormValidator(popupAddSelector);
-
+const proflieFormValidator = new FormValidator(popupProfileSelector);
+const addPlaceFormValidator = new FormValidator(popupAddSelector);
 
 //экземпляр UserInfo
 const userProfile = new UserInfo({
@@ -43,13 +43,13 @@ const userProfile = new UserInfo({
 //открытие попапа редактирования профиля
 const buttonEditElement = document.querySelector(buttonEditSelector);
 const popupProfile = new PopupWithForm(popupProfileSelector, (userInfo) => {
-  userProfile.setUserInfo(userInfo);
+  this.userProfile.setUserInfo(userInfo);
 });
 
 //открытие попапа добавления карточки
 const buttonAddElement = document.querySelector(buttonAddSelector);
 const addPlacePopup = new PopupWithForm(popupAddSelector, (addUserPlace) => {
-  section.addUserItem(addUserPlace)
+  section.addUserItem(addUserPlace);
 });
 
 //открытие попапа зума изображения
@@ -59,15 +59,21 @@ const popupZoom = new PopupWithImage(popupImageSelector);
 buttonEditElement.addEventListener("click", () => {
   const userInformation = userProfile.getUserInfo();
   const nameInputElement = document.querySelector(nameInputSelector);
-  const professionInputElement = document.querySelector(professionInputSelector);
+  const professionInputElement = document.querySelector(
+    professionInputSelector
+  );
   nameInputElement.value = userInformation.userName;
   professionInputElement.value = userInformation.userProfession;
   popupProfile.openPopup();
- });
+  proflieFormValidator.deleteAllErrors();
+});
 
 //слушатель на открытие попапа добавления места
 buttonAddElement.addEventListener("click", () => {
-   addPlacePopup.openPopup();
+  addPlacePopup.openPopup();
+  addPlaceFormValidator.deleteAllErrors();
+  const buttonSubmitElement = document.querySelector(buttonSubmitSelector);
+  buttonSubmitElement.disabled = true;
 });
 
 function cardCreateFunction(item) {

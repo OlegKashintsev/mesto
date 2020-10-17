@@ -1,7 +1,8 @@
 import formConfig from "../utils/constants.js";
 
 export default class FormValidator {
-  constructor(formSelector) {
+  constructor(formSelector,formConfig) {
+    this._formConfig = formConfig;
     this._formElement = document.querySelector(formSelector);
     this._setEventListeners();
   }

@@ -57,7 +57,6 @@ export default class PopupWithForm extends Popup {
       evt.preventDefault();
       this._formSubmitCallback(this._getInputValues());
       this.closePopup()
-      this._submitButton.disabled = true;
     }
   
 
@@ -69,6 +68,5 @@ _removeEventListeners() {
   closePopup() {
     super.closePopup();
     this._popupElement.querySelector(".popup__container").reset();
-    deleteAllErrors();
   }
 }

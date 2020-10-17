@@ -68,6 +68,7 @@ export const inputPlaceSelector = ".popup__input_place_title"; //ввод наз
 export const containerAddSelector = ".popup__container_add"; // Контейнер попапа добавления карточки
 export const placeImageSelector = ".place__image"; //Карточка
 
+
 // //Профиль
 // const popupProfile = document.querySelector('.popup_type_profile'); // Попап профиля
 // const buttonEdit = document.querySelector('.profile__button_edit'); // Открыть редактирование профиля
