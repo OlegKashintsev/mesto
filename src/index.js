@@ -2,7 +2,7 @@ import "./pages/index.css";
 //импортируем модули и константы
 import Card from "./script/components/Card.js";
 import PopupWithImage from "./script/components/PopupWithImage.js";
-import {
+import formConfig, {
   cards,
   placeContainerSelector,
   nameInputSelector,
@@ -13,7 +13,6 @@ import {
   buttonAddSelector,
   popupProfileSelector,
   popupAddSelector,
-  buttonSubmitSelector,
 } from "./script/utils/constants.js";
 import Section from "./script/components/Section.js";
 import PopupWithForm from "./script/components/PopupWithForm.js";
@@ -31,8 +30,8 @@ const section = new Section(
 );
 
 //Инициирование валидации
-const proflieFormValidator = new FormValidator(popupProfileSelector);
-const addPlaceFormValidator = new FormValidator(popupAddSelector);
+const proflieFormValidator = new FormValidator(popupProfileSelector, formConfig);
+const addPlaceFormValidator = new FormValidator(popupAddSelector, formConfig);
 
 //экземпляр UserInfo
 const userProfile = new UserInfo({
@@ -43,7 +42,7 @@ const userProfile = new UserInfo({
 //открытие попапа редактирования профиля
 const buttonEditElement = document.querySelector(buttonEditSelector);
 const popupProfile = new PopupWithForm(popupProfileSelector, (userInfo) => {
-  this.userProfile.setUserInfo(userInfo);
+  userProfile.setUserInfo(userInfo);
 });
 
 //открытие попапа добавления карточки
@@ -59,9 +58,7 @@ const popupZoom = new PopupWithImage(popupImageSelector);
 buttonEditElement.addEventListener("click", () => {
   const userInformation = userProfile.getUserInfo();
   const nameInputElement = document.querySelector(nameInputSelector);
-  const professionInputElement = document.querySelector(
-    professionInputSelector
-  );
+  const professionInputElement = document.querySelector(professionInputSelector);
   nameInputElement.value = userInformation.userName;
   professionInputElement.value = userInformation.userProfession;
   popupProfile.openPopup();
@@ -72,8 +69,6 @@ buttonEditElement.addEventListener("click", () => {
 buttonAddElement.addEventListener("click", () => {
   addPlacePopup.openPopup();
   addPlaceFormValidator.deleteAllErrors();
-  const buttonSubmitElement = document.querySelector(buttonSubmitSelector);
-  buttonSubmitElement.disabled = true;
 });
 
 function cardCreateFunction(item) {

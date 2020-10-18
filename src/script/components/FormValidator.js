@@ -56,21 +56,18 @@ export default class FormValidator {
 
   // Удаление ошибок 
   deleteAllErrors = () => {
-    const inputList = Array.from(this._formElement.querySelectorAll(formConfig.inputSelector)
-    );
+    const buttonSubmit = this._formElement.querySelector(formConfig.submitButtonSelector);
+    const inputList = Array.from(this._formElement.querySelectorAll(formConfig.inputSelector));
       inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
     });
+    this._toggleButtonState(inputList, buttonSubmit);
   };
 
   // Приватный метод: добавляем слушатели всем полям ввода внутри формы
   _setEventListeners = () => {
-    const inputList = Array.from(
-      this._formElement.querySelectorAll(formConfig.inputSelector)
-    );
-    const buttonSubmit = this._formElement.querySelector(
-      formConfig.submitButtonSelector
-    );
+    const inputList = Array.from(this._formElement.querySelectorAll(formConfig.inputSelector));
+    const buttonSubmit = this._formElement.querySelector(formConfig.submitButtonSelector);
     this._toggleButtonState(inputList, buttonSubmit);
     inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
